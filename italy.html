@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Italy — World's Greatest Cars</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .country-hero { padding: 60px 0 40px; position: relative; }
+    .country-flag-bg { font-size: 120px; position: absolute; right: 0; top: 30px; opacity: 0.08; pointer-events: none; user-select: none; }
+    .country-name { font-family: 'Bebas Neue', sans-serif; font-size: clamp(48px, 8vw, 90px); letter-spacing: 5px; line-height: 1; }
+    .country-name span { color: var(--accent); }
+    .car-name-big { font-family: 'Bebas Neue', sans-serif; font-size: clamp(26px, 4vw, 42px); letter-spacing: 3px; color: var(--muted); margin-bottom: 30px; }
+    .spec-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 14px; margin-bottom: 30px; }
+    .spec-box { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 18px; text-align: center; }
+    .spec-val { font-family: 'Bebas Neue', sans-serif; font-size: 30px; letter-spacing: 2px; color: var(--accent); line-height: 1; }
+    .spec-lbl { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; margin-top: 6px; }
+    .fact-box { background: rgba(230,57,70,0.06); border: 1px solid rgba(230,57,70,0.2); border-radius: 10px; padding: 20px 24px; margin-bottom: 30px; }
+    .fact-box .label { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--accent); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 8px; }
+    .other-cars { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; }
+    .other-car { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 18px; }
+    .other-car h4 { font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 2px; margin-bottom: 4px; color: var(--text); }
+    .other-car p { font-size: 13px; color: var(--muted); }
+    .nav-countries { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 40px; }
+    .nav-countries a { font-family: 'Share Tech Mono', monospace; font-size: 11px; padding: 5px 12px; border: 1px solid var(--border); border-radius: 6px; color: var(--muted); text-decoration: none; transition: all 0.2s; }
+    .nav-countries a:hover, .nav-countries a.active { color: var(--text); border-color: var(--accent); }
+  </style>
+</head>
+<body>
+<nav class="navbar">
+  <a href="index.html" class="nav-logo">AUTOCARTA</a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="links.html">Countries</a>
+    <a href="tables.html">Spec Table</a>
+    <a href="quiz.html">Quiz</a>
+  </div>
+</nav>
+<div class="page-wrap">
+  <div class="nav-countries">
+    <a href="germany.html">🇩🇪 Germany</a>
+    <a href="italy.html" class="active">🇮🇹 Italy</a>
+    <a href="uk.html">🇬🇧 UK</a>
+    <a href="japan.html">🇯🇵 Japan</a>
+    <a href="usa.html">🇺🇸 USA</a>
+    <a href="india.html">🇮🇳 India</a>
+  </div>
+  <div class="country-hero">
+    <div class="country-flag-bg">🇮🇹</div>
+    <div class="concept-badge">Country Page</div>
+    <div class="country-name"><span>Italy</span></div>
+    <div class="car-name-big">Ferrari SF90 Stradale</div>
+  </div>
+  <div class="spec-grid">
+    <div class="spec-box"><div class="spec-val">340</div><div class="spec-lbl">Top Speed (km/h)</div></div>
+    <div class="spec-box"><div class="spec-val">2.5s</div><div class="spec-lbl">0-100 km/h</div></div>
+    <div class="spec-box"><div class="spec-val">986</div><div class="spec-lbl">Horsepower</div></div>
+    <div class="spec-box"><div class="spec-val">V8+</div><div class="spec-lbl">Engine Type</div></div>
+    <div class="spec-box"><div class="spec-val">1947</div><div class="spec-lbl">Ferrari Founded</div></div>
+    <div class="spec-box"><div class="spec-val">14K</div><div class="spec-lbl">Cars/Year Only</div></div>
+  </div>
+  <div class="card fade-up">
+    <div class="card-label">About the Ferrari SF90 Stradale</div>
+    <p style="color:var(--muted); line-height:1.9;">The Ferrari SF90 Stradale is Ferrari's most powerful road car ever built. It combines a twin-turbocharged V8 engine with three electric motors in a plug-in hybrid system, producing a staggering 986 horsepower. The name SF90 honours Ferrari's 90th anniversary in Formula 1. Every Ferrari is hand-assembled at the Maranello factory in Italy — a process that takes weeks per car.</p>
+  </div>
+  <div class="fact-box">
+    <div class="label">Fun Fact</div>
+    <p>Ferrari intentionally limits production to around 14,000 cars per year to maintain exclusivity. If you order a Ferrari today, you may wait 2-3 years for delivery — and Ferrari can choose to refuse your order if they don't think you fit the brand.</p>
+  </div>
+  <div class="card fade-up">
+    <div class="card-label">Other Iconic Italian Cars</div>
+    <div class="other-cars">
+      <div class="other-car"><h4>Lamborghini Huracán</h4><p>5.2L V10 · 630 hp · 2.9s 0-100</p></div>
+      <div class="other-car"><h4>Alfa Romeo Giulia GTA</h4><p>2.9L V6 Biturbo · 540 hp · 3.6s</p></div>
+      <div class="other-car"><h4>Pagani Huayra</h4><p>6.0L V12 AMG · 730 hp · 3.2s</p></div>
+      <div class="other-car"><h4>Maserati MC20</h4><p>3.0L V6 Biturbo · 630 hp · 2.9s</p></div>
+    </div>
+  </div>
+  <div class="card fade-up">
+    <div class="card-label">Ferrari Model Comparison — HTML Table</div>
+    <table class="styled-table">
+      <thead><tr><th>Model</th><th>Engine</th><th>HP</th><th>0-100</th><th>Price (approx)</th></tr></thead>
+      <tbody>
+        <tr><td><strong>SF90 Stradale</strong></td><td>4.0L V8 + 3 Motors</td><td>986 hp</td><td>2.5s</td><td>₹5.5 Crore</td></tr>
+        <tr><td><strong>F8 Tributo</strong></td><td>3.9L Twin-Turbo V8</td><td>710 hp</td><td>2.9s</td><td>₹3.5 Crore</td></tr>
+        <tr><td><strong>Roma</strong></td><td>3.9L Twin-Turbo V8</td><td>612 hp</td><td>3.4s</td><td>₹3.7 Crore</td></tr>
+        <tr><td><strong>LaFerrari</strong></td><td>6.3L V12 + Motor</td><td>950 hp</td><td>2.4s</td><td>₹14 Crore+</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div style="display:flex; gap:12px; flex-wrap:wrap;">
+    <a href="germany.html" class="btn">← Germany</a>
+    <a href="uk.html" class="btn btn-filled">Next: UK 🇬🇧 →</a>
+    <a href="quiz.html" class="btn">Take the Quiz 🏁</a>
+  </div>
+</div>
+<footer><p>World's Greatest Cars &nbsp;·&nbsp; Italy Page</p></footer>
+</body>
+</html>

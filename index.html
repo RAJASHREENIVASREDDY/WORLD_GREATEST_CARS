@@ -1,0 +1,585 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>World's Greatest Cars</title>
+    <!-- EXTERNAL CSS CONCEPT: linking external stylesheet -->
+    <link rel="stylesheet" href="style.css" />
+    <!-- INTERNAL CSS CONCEPT: page-specific styles -->
+    <style>
+      .hero {
+        text-align: center;
+        padding: 80px 20px 60px;
+        position: relative;
+      }
+      .hero-glow {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 500px;
+        height: 260px;
+        background: radial-gradient(
+          ellipse,
+          rgba(230, 57, 70, 0.1) 0%,
+          transparent 70%
+        );
+        pointer-events: none;
+      }
+      .hero-tag {
+        display: inline-block;
+        font-family: "Share Tech Mono", monospace;
+        font-size: 11px;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        color: var(--accent);
+        border: 1px solid rgba(230, 57, 70, 0.3);
+        background: rgba(230, 57, 70, 0.06);
+        padding: 5px 16px;
+        border-radius: 20px;
+        margin-bottom: 20px;
+      }
+      .hero h1 {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: clamp(48px, 10vw, 110px);
+        letter-spacing: 6px;
+        line-height: 0.95;
+        margin-bottom: 20px;
+      }
+      .hero h1 em {
+        color: var(--accent);
+        font-style: normal;
+      }
+      .hero-desc {
+        font-size: 15px;
+        color: var(--muted);
+        max-width: 500px;
+        margin: 0 auto 36px;
+        font-weight: 300;
+      }
+      .hero-btns {
+        display: flex;
+        gap: 12px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      /* Map section */
+      .map-section {
+        margin-bottom: 60px;
+      }
+      .map-label {
+        font-family: "Share Tech Mono", monospace;
+        font-size: 10px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-bottom: 16px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .map-label::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: var(--border);
+      }
+
+      .map-container {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        overflow: hidden;
+        position: relative;
+      }
+      .map-tip {
+        position: absolute;
+        bottom: 14px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-family: "Share Tech Mono", monospace;
+        font-size: 10px;
+        color: var(--muted);
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        white-space: nowrap;
+      }
+
+      /* IMAGE MAP CONCEPT: using <map> and <area> tags */
+      #world-map-img {
+        width: 100%;
+        display: block;
+        filter: grayscale(60%) brightness(0.7);
+        transition: filter 0.3s;
+      }
+      #world-map-img:hover {
+        filter: grayscale(40%) brightness(0.85);
+      }
+
+      /* Popup for image map click */
+      .map-popup {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: var(--card);
+        border: 1px solid rgba(230, 57, 70, 0.4);
+        border-radius: var(--radius);
+        padding: 28px 30px;
+        z-index: 1000;
+        width: 300px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+      }
+      .map-popup.show {
+        display: block;
+      }
+      .popup-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.6);
+        z-index: 999;
+      }
+      .popup-overlay.show {
+        display: block;
+      }
+      .popup-flag {
+        font-size: 36px;
+        margin-bottom: 8px;
+      }
+      .popup-country {
+        font-family: "Share Tech Mono", monospace;
+        font-size: 10px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-bottom: 4px;
+      }
+      .popup-car {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 28px;
+        letter-spacing: 2px;
+        color: var(--text);
+        margin-bottom: 2px;
+      }
+      .popup-brand {
+        font-size: 13px;
+        color: var(--muted);
+        margin-bottom: 16px;
+      }
+      .popup-stats {
+        border-top: 1px solid var(--border);
+        padding-top: 14px;
+        margin-bottom: 16px;
+      }
+      .popup-stat {
+        display: flex;
+        justify-content: space-between;
+        font-size: 13px;
+        padding: 5px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      }
+      .popup-stat .sl {
+        color: var(--muted);
+        font-family: "Share Tech Mono", monospace;
+        font-size: 11px;
+      }
+      .popup-stat .sv {
+        font-weight: 600;
+        color: var(--accent);
+      }
+      .popup-actions {
+        display: flex;
+        gap: 10px;
+      }
+      .popup-close {
+        cursor: pointer;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        padding: 8px 16px;
+        color: var(--muted);
+        font-family: "Share Tech Mono", monospace;
+        font-size: 11px;
+        letter-spacing: 1px;
+      }
+      .popup-close:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+      }
+
+      /* Topics nav */
+      .topics-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 14px;
+        margin-bottom: 60px;
+      }
+      .topic-card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 20px;
+        text-decoration: none;
+        text-align: center;
+        transition: all 0.2s;
+        display: block;
+      }
+      .topic-card:hover {
+        border-color: rgba(230, 57, 70, 0.4);
+        transform: translateY(-3px);
+      }
+      .topic-icon {
+        font-size: 26px;
+        margin-bottom: 10px;
+      }
+      .topic-name {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 18px;
+        letter-spacing: 2px;
+        color: var(--text);
+        margin-bottom: 2px;
+      }
+      .topic-desc {
+        font-size: 11px;
+        color: var(--muted);
+        font-family: "Share Tech Mono", monospace;
+      }
+
+      /* Student info */
+      .student-card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 24px 30px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 16px;
+        margin-bottom: 60px;
+      }
+      .student-info p {
+        font-size: 13px;
+        color: var(--muted);
+        font-family: "Share Tech Mono", monospace;
+        letter-spacing: 1px;
+      }
+      .student-info h2 {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 26px;
+        letter-spacing: 2px;
+        color: var(--text);
+      }
+      .student-info span {
+        color: var(--accent);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- NAVBAR — Links concept: navigation between pages -->
+    <nav class="navbar">
+      <a href="index.html" class="nav-logo">AUTOCARTA</a>
+      <div class="nav-links">
+        <a href="index.html" class="active nav-home">Home</a>
+        <a href="css.html">CSS</a>
+        <a href="xml.html">XML</a>
+        <a href="tables.html">Tables</a>
+        <a href="links.html">Links</a>
+        <a href="javascript.html">JavaScript</a>
+        <a href="quiz.html">Quiz</a>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <div class="hero">
+      <div class="hero-glow"></div>
+      <div class="hero-tag">Web Technology Project</div>
+      <h1>World's<br /><em>Greatest</em><br />Cars</h1>
+      <p class="hero-desc">
+        Explore iconic cars from around the world. Click a country on the map to
+        discover its legendary machine.
+      </p>
+      <div class="hero-btns">
+        <a href="links.html" class="btn btn-filled">Explore Countries</a>
+        <a href="quiz.html" class="btn">Take the Quiz</a>
+      </div>
+    </div>
+
+    <div class="page-wrap">
+      <!-- STUDENT INFO CARD — placeholder to edit -->
+      <div class="student-card">
+        <div class="student-info">
+          <p>Student Name</p>
+          <h2><span>PAKALA RAJA SHREENIVAS REDDY</span></h2>
+        </div>
+        <div class="student-info" style="text-align: right">
+          <p>College / Department</p>
+          <h2>BHARATH INSTITUTE OF HIGHER EDUCATION AND RESEARCH / CSE</h2>
+        </div>
+        <div class="student-info" style="text-align: right">
+          <p>Subject</p>
+          <h2>IMP — Web Technology</h2>
+        </div>
+      </div>
+
+      <!-- IMAGE MAPPING SECTION -->
+      <div class="map-section">
+        <div class="map-label">Image Map Concept — Click a country</div>
+        <div class="map-container">
+          <!--
+        IMAGE MAP CONCEPT:
+        The <map> tag defines clickable areas on an image.
+        Each <area> tag defines a clickable zone (shape + coords).
+        The <img> tag links to the map via usemap="#mapname".
+        coords are: x,y,radius for circles — based on image dimensions.
+        This image is 1200x600px for the coordinate system below.
+      -->
+          <img
+            id="world-map-img"
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/World_map_-_low_resolution.svg/1200px-World_map_-_low_resolution.svg.png"
+            usemap="#worldmap"
+            alt="World Map — click a country to see its iconic car"
+            style="width: 100%; cursor: crosshair"
+          />
+          <map name="worldmap">
+            <!-- Germany: central Europe -->
+            <area
+              shape="circle"
+              coords="610,185,35"
+              href="#"
+              alt="Germany"
+              onclick="
+                showPopup('germany');
+                return false;
+              "
+            />
+            <!-- Italy -->
+            <area
+              shape="circle"
+              coords="620,220,28"
+              href="#"
+              alt="Italy"
+              onclick="
+                showPopup('italy');
+                return false;
+              "
+            />
+            <!-- UK -->
+            <area
+              shape="circle"
+              coords="558,175,28"
+              href="#"
+              alt="United Kingdom"
+              onclick="
+                showPopup('uk');
+                return false;
+              "
+            />
+            <!-- Japan -->
+            <area
+              shape="circle"
+              coords="1020,210,30"
+              href="#"
+              alt="Japan"
+              onclick="
+                showPopup('japan');
+                return false;
+              "
+            />
+            <!-- USA -->
+            <area
+              shape="circle"
+              coords="235,215,55"
+              href="#"
+              alt="USA"
+              onclick="
+                showPopup('usa');
+                return false;
+              "
+            />
+            <!-- India -->
+            <area
+              shape="circle"
+              coords="810,265,35"
+              href="#"
+              alt="India"
+              onclick="
+                showPopup('india');
+                return false;
+              "
+            />
+          </map>
+          <div class="map-tip">
+            ▲ click on Germany / Italy / UK / Japan / USA / India
+          </div>
+        </div>
+      </div>
+
+      <!-- TOPICS NAVIGATION -->
+      <div class="map-label" style="margin-bottom: 20px">
+        Web Concepts Covered
+      </div>
+      <div class="topics-grid">
+        <a href="css.html" class="topic-card">
+          <div class="topic-icon">🎨</div>
+          <div class="topic-name">CSS</div>
+          <div class="topic-desc">Inline · Internal · External</div>
+        </a>
+        <a href="xml.html" class="topic-card">
+          <div class="topic-icon">📄</div>
+          <div class="topic-name">XML</div>
+          <div class="topic-desc">Data storage & fetch</div>
+        </a>
+        <a href="tables.html" class="topic-card">
+          <div class="topic-icon">📊</div>
+          <div class="topic-name">Tables</div>
+          <div class="topic-desc">Spec comparison</div>
+        </a>
+        <a href="links.html" class="topic-card">
+          <div class="topic-icon">🔗</div>
+          <div class="topic-name">Links</div>
+          <div class="topic-desc">Navigation & anchors</div>
+        </a>
+        <a href="javascript.html" class="topic-card">
+          <div class="topic-icon">⚡</div>
+          <div class="topic-name">JavaScript</div>
+          <div class="topic-desc">Form validation & logic</div>
+        </a>
+        <a href="quiz.html" class="topic-card">
+          <div class="topic-icon">🏁</div>
+          <div class="topic-name">Quiz</div>
+          <div class="topic-desc">Test your knowledge</div>
+        </a>
+      </div>
+    </div>
+    <!-- end .page-wrap -->
+
+    <!-- POPUP (for image map clicks) -->
+    <div class="popup-overlay" id="overlay" onclick="closePopup()"></div>
+    <div class="map-popup" id="popup">
+      <div class="popup-flag" id="p-flag"></div>
+      <div class="popup-country" id="p-country"></div>
+      <div class="popup-car" id="p-car"></div>
+      <div class="popup-brand" id="p-brand"></div>
+      <div class="popup-stats">
+        <div class="popup-stat">
+          <span class="sl">Top Speed</span><span class="sv" id="p-speed"></span>
+        </div>
+        <div class="popup-stat">
+          <span class="sl">0-100 km/h</span><span class="sv" id="p-acc"></span>
+        </div>
+        <div class="popup-stat">
+          <span class="sl">Horsepower</span><span class="sv" id="p-hp"></span>
+        </div>
+      </div>
+      <div class="popup-actions">
+        <!-- INLINE CSS CONCEPT: style applied directly on element -->
+        <button class="popup-close" onclick="closePopup()">Close</button>
+        <a class="btn btn-filled" id="p-link" href="#">View Full Details →</a>
+      </div>
+    </div>
+
+    <footer>
+      <p>
+        World's Greatest Cars &nbsp;·&nbsp; Web Technology Project &nbsp;·&nbsp;
+        All concepts demonstrated
+      </p>
+    </footer>
+
+    <script>
+      // JAVASCRIPT CONCEPT: car data object (mirrors XML data)
+      const cars = {
+        germany: {
+          flag: "🇩🇪",
+          country: "Germany",
+          car: "Porsche 911 GT3",
+          brand: "Porsche AG",
+          speed: "318 km/h",
+          acc: "3.4 seconds",
+          hp: "510 hp",
+          page: "germany.html",
+        },
+        italy: {
+          flag: "🇮🇹",
+          country: "Italy",
+          car: "Ferrari SF90 Stradale",
+          brand: "Ferrari SpA",
+          speed: "340 km/h",
+          acc: "2.5 seconds",
+          hp: "986 hp",
+          page: "italy.html",
+        },
+        uk: {
+          flag: "🇬🇧",
+          country: "United Kingdom",
+          car: "McLaren P1",
+          brand: "McLaren Automotive",
+          speed: "350 km/h",
+          acc: "2.8 seconds",
+          hp: "916 hp",
+          page: "uk.html",
+        },
+        japan: {
+          flag: "🇯🇵",
+          country: "Japan",
+          car: "Nissan GT-R R35",
+          brand: "Nissan Motor Co.",
+          speed: "315 km/h",
+          acc: "2.7 seconds",
+          hp: "565 hp",
+          page: "japan.html",
+        },
+        usa: {
+          flag: "🇺🇸",
+          country: "United States",
+          car: "Dodge Viper ACR",
+          brand: "Dodge (Stellantis)",
+          speed: "330 km/h",
+          acc: "3.5 seconds",
+          hp: "645 hp",
+          page: "usa.html",
+        },
+        india: {
+          flag: "🇮🇳",
+          country: "India",
+          car: "Tata Altroz Racer",
+          brand: "Tata Motors",
+          speed: "180 km/h",
+          acc: "8.2 seconds",
+          hp: "120 hp",
+          page: "india.html",
+        },
+      };
+
+      // JAVASCRIPT CONCEPT: function to show popup with dynamic content
+      function showPopup(key) {
+        const d = cars[key];
+        document.getElementById("p-flag").textContent = d.flag;
+        document.getElementById("p-country").textContent = d.country;
+        document.getElementById("p-car").textContent = d.car;
+        document.getElementById("p-brand").textContent = d.brand;
+        document.getElementById("p-speed").textContent = d.speed;
+        document.getElementById("p-acc").textContent = d.acc;
+        document.getElementById("p-hp").textContent = d.hp;
+        document.getElementById("p-link").href = d.page;
+        document.getElementById("popup").classList.add("show");
+        document.getElementById("overlay").classList.add("show");
+      }
+
+      // JAVASCRIPT CONCEPT: close popup function
+      function closePopup() {
+        document.getElementById("popup").classList.remove("show");
+        document.getElementById("overlay").classList.remove("show");
+      }
+
+      // JAVASCRIPT CONCEPT: keyboard close
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") closePopup();
+      });
+    </script>
+  </body>
+</html>

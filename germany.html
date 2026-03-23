@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Germany — World's Greatest Cars</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .country-hero { padding: 60px 0 40px; position: relative; }
+    .country-flag-bg { font-size: 120px; position: absolute; right: 0; top: 30px; opacity: 0.08; pointer-events: none; user-select: none; line-height: 1; }
+    .country-name { font-family: 'Bebas Neue', sans-serif; font-size: clamp(48px, 8vw, 90px); letter-spacing: 5px; line-height: 1; }
+    .country-name span { color: var(--accent); }
+    .car-name-big { font-family: 'Bebas Neue', sans-serif; font-size: clamp(26px, 4vw, 42px); letter-spacing: 3px; color: var(--muted); margin-bottom: 30px; }
+    .spec-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 14px; margin-bottom: 30px; }
+    .spec-box { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 18px; text-align: center; }
+    .spec-val { font-family: 'Bebas Neue', sans-serif; font-size: 30px; letter-spacing: 2px; color: var(--accent); line-height: 1; }
+    .spec-lbl { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; margin-top: 6px; }
+    .fact-box { background: rgba(230,57,70,0.06); border: 1px solid rgba(230,57,70,0.2); border-radius: 10px; padding: 20px 24px; margin-bottom: 30px; }
+    .fact-box .label { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--accent); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 8px; }
+    .other-cars { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; }
+    .other-car { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 18px; }
+    .other-car h4 { font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 2px; margin-bottom: 4px; color: var(--text); }
+    .other-car p { font-size: 13px; color: var(--muted); }
+    .nav-countries { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 40px; }
+    .nav-countries a { font-family: 'Share Tech Mono', monospace; font-size: 11px; padding: 5px 12px; border: 1px solid var(--border); border-radius: 6px; color: var(--muted); text-decoration: none; transition: all 0.2s; }
+    .nav-countries a:hover, .nav-countries a.active { color: var(--text); border-color: var(--accent); }
+  </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <a href="index.html" class="nav-logo">AUTOCARTA</a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="links.html">Countries</a>
+    <a href="tables.html">Spec Table</a>
+    <a href="quiz.html">Quiz</a>
+  </div>
+</nav>
+
+<div class="page-wrap">
+
+  <div class="nav-countries">
+    <a href="germany.html" class="active">🇩🇪 Germany</a>
+    <a href="italy.html">🇮🇹 Italy</a>
+    <a href="uk.html">🇬🇧 UK</a>
+    <a href="japan.html">🇯🇵 Japan</a>
+    <a href="usa.html">🇺🇸 USA</a>
+    <a href="india.html">🇮🇳 India</a>
+  </div>
+
+  <div class="country-hero">
+    <div class="country-flag-bg">🇩🇪</div>
+    <div class="concept-badge">Country Page — All Concepts</div>
+    <div class="country-name"><span>Germany</span></div>
+    <div class="car-name-big">Porsche 911 GT3</div>
+  </div>
+
+  <!-- SPECS -->
+  <div class="spec-grid">
+    <div class="spec-box"><div class="spec-val">318</div><div class="spec-lbl">Top Speed (km/h)</div></div>
+    <div class="spec-box"><div class="spec-val">3.4s</div><div class="spec-lbl">0-100 km/h</div></div>
+    <div class="spec-box"><div class="spec-val">510</div><div class="spec-lbl">Horsepower</div></div>
+    <div class="spec-box"><div class="spec-val">4.0L</div><div class="spec-lbl">Engine Size</div></div>
+    <div class="spec-box"><div class="spec-val">1963</div><div class="spec-lbl">911 First Year</div></div>
+    <div class="spec-box"><div class="spec-val">9000</div><div class="spec-lbl">Max RPM</div></div>
+  </div>
+
+  <!-- INFO -->
+  <div class="card fade-up">
+    <div class="card-label">About the Porsche 911 GT3</div>
+    <p style="color:var(--muted); line-height:1.9;">The Porsche 911 GT3 is the track-focused version of the iconic 911. It uses a naturally aspirated 4.0-litre flat-six engine — one of the last of its kind — that screams to 9,000 RPM. Unlike most modern sports cars, the GT3 has no turbocharger, making every horsepower feel pure and immediate. The rear-engine layout gives it unique handling characteristics that drivers either love deeply or find challenging.</p>
+  </div>
+
+  <!-- FUN FACT -->
+  <div class="fact-box">
+    <div class="label">Fun Fact</div>
+    <p>The Porsche 911 has been in continuous production since 1963 — over 60 years. It's one of the longest-running car models in history. Every new 911 is instantly recognizable yet completely modern.</p>
+  </div>
+
+  <!-- OTHER GERMAN CARS -->
+  <div class="card fade-up">
+    <div class="card-label">Other Iconic German Cars</div>
+    <div class="other-cars">
+      <div class="other-car"><h4>BMW M5 CS</h4><p>4.4L V8 Turbo · 627 hp · 3.0s 0-100</p></div>
+      <div class="other-car"><h4>Mercedes AMG GT</h4><p>4.0L V8 Biturbo · 577 hp · 3.2s 0-100</p></div>
+      <div class="other-car"><h4>Audi RS6 Avant</h4><p>4.0L V8 TFSI · 600 hp · 3.3s 0-100</p></div>
+      <div class="other-car"><h4>Brabus 900</h4><p>6.0L V12 Biturbo · 900 hp · 2.9s 0-100</p></div>
+    </div>
+  </div>
+
+  <!-- SPEC TABLE (Tables concept) -->
+  <div class="card fade-up">
+    <div class="card-label">Porsche Lineup Comparison — HTML Table</div>
+    <table class="styled-table">
+      <thead>
+        <tr><th>Model</th><th>Engine</th><th>HP</th><th>0-100</th><th>Top Speed</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>911 GT3</strong></td><td>4.0L Flat-6 NA</td><td>510 hp</td><td>3.4s</td><td>318 km/h</td></tr>
+        <tr><td><strong>911 Turbo S</strong></td><td>3.8L Flat-6 Turbo</td><td>650 hp</td><td>2.7s</td><td>330 km/h</td></tr>
+        <tr><td><strong>Cayenne Turbo GT</strong></td><td>4.0L V8 Turbo</td><td>640 hp</td><td>3.3s</td><td>300 km/h</td></tr>
+        <tr><td><strong>918 Spyder</strong></td><td>4.6L V8 Hybrid</td><td>887 hp</td><td>2.5s</td><td>345 km/h</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div style="display:flex; gap:12px; flex-wrap:wrap;">
+    <a href="links.html" class="btn">← All Countries</a>
+    <a href="italy.html" class="btn btn-filled">Next: Italy 🇮🇹 →</a>
+    <a href="quiz.html" class="btn">Take the Quiz 🏁</a>
+  </div>
+
+</div>
+
+<footer><p>World's Greatest Cars &nbsp;·&nbsp; Germany Page</p></footer>
+</body>
+</html>

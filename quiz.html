@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Car Quiz — World's Greatest Cars</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .quiz-wrap { max-width: 680px; margin: 0 auto; }
+    .quiz-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 36px; margin-bottom: 20px; }
+    .q-number { font-family: 'Share Tech Mono', monospace; font-size: 11px; color: var(--muted); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 16px; }
+    .q-text { font-family: 'Bebas Neue', sans-serif; font-size: 28px; letter-spacing: 1px; line-height: 1.2; margin-bottom: 28px; color: var(--text); }
+    .q-options { display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
+    .q-option {
+      padding: 14px 20px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 15px;
+      cursor: pointer;
+      color: var(--text);
+      text-align: left;
+      transition: all 0.15s;
+      font-family: 'Barlow', sans-serif;
+      font-weight: 400;
+    }
+    .q-option:hover { border-color: rgba(230,57,70,0.4); background: rgba(230,57,70,0.04); }
+    .q-option.correct { background: rgba(86,211,100,0.1); border-color: rgba(86,211,100,0.5); color: #56d364; }
+    .q-option.wrong { background: rgba(230,57,70,0.1); border-color: rgba(230,57,70,0.5); color: var(--accent); }
+    .q-option.disabled { cursor: not-allowed; }
+    .q-feedback { min-height: 24px; font-size: 14px; margin-bottom: 16px; font-family: 'Share Tech Mono', monospace; letter-spacing: 1px; }
+    .q-feedback.ok { color: #56d364; }
+    .q-feedback.err { color: var(--accent); }
+    .progress-bar { height: 3px; background: var(--border); border-radius: 2px; margin-bottom: 30px; overflow: hidden; }
+    .progress-fill { height: 100%; background: var(--accent); border-radius: 2px; transition: width 0.4s ease; }
+    .score-board { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 28px; }
+    .score-cell { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 16px; text-align: center; }
+    .score-cell .num { font-family: 'Bebas Neue', sans-serif; font-size: 40px; letter-spacing: 2px; }
+    .score-cell .lbl { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; margin-top: 4px; }
+    .correct-color { color: #56d364; }
+    .wrong-color { color: var(--accent); }
+    .results-screen { display: none; }
+    .results-screen.show { display: block; }
+    .quiz-screen { display: block; }
+    .quiz-screen.hide { display: none; }
+    .grade { font-family: 'Bebas Neue', sans-serif; font-size: 80px; letter-spacing: 6px; text-align: center; margin: 20px 0; }
+    .grade-msg { text-align: center; font-size: 16px; color: var(--muted); margin-bottom: 30px; }
+  </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <a href="index.html" class="nav-logo">AUTOCARTA</a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="css.html">CSS</a>
+    <a href="xml.html">XML</a>
+    <a href="tables.html">Tables</a>
+    <a href="links.html">Links</a>
+    <a href="javascript.html">JavaScript</a>
+    <a href="quiz.html" class="active">Quiz</a>
+  </div>
+</nav>
+
+<div class="page-wrap">
+  <div class="concept-badge">JavaScript — All concepts applied</div>
+  <div class="section-title">Car <span>Quiz</span></div>
+  <div class="section-sub">10 questions — form validation, events, DOM, scoring</div>
+
+  <div class="quiz-wrap">
+
+    <!-- QUIZ SCREEN -->
+    <div class="quiz-screen" id="quiz-screen">
+      <div class="quiz-card">
+        <div class="progress-bar"><div class="progress-fill" id="progress" style="width:0%"></div></div>
+        <div class="q-number" id="q-num">Question 1 of 10</div>
+        <div class="q-text" id="q-text"></div>
+        <div class="q-options" id="q-options"></div>
+        <div class="q-feedback" id="q-feedback"></div>
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+          <div class="score-board" style="grid-template-columns:1fr 1fr; gap:10px; margin:0;">
+            <div class="score-cell"><div class="num correct-color" id="live-correct">0</div><div class="lbl">Correct</div></div>
+            <div class="score-cell"><div class="num wrong-color" id="live-wrong">0</div><div class="lbl">Wrong</div></div>
+          </div>
+          <button class="btn btn-filled" id="next-btn" onclick="nextQuestion()" style="display:none;">Next Question →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- RESULTS SCREEN -->
+    <div class="results-screen" id="results-screen">
+      <div class="quiz-card">
+        <div class="card-label">Quiz Complete!</div>
+        <div class="grade" id="grade-display"></div>
+        <div class="grade-msg" id="grade-msg"></div>
+        <div class="score-board">
+          <div class="score-cell"><div class="num correct-color" id="final-correct">0</div><div class="lbl">Correct</div></div>
+          <div class="score-cell"><div class="num wrong-color" id="final-wrong">0</div><div class="lbl">Wrong</div></div>
+          <div class="score-cell"><div class="num" id="final-pct">0%</div><div class="lbl">Score</div></div>
+        </div>
+        <div style="display:flex; gap:12px; flex-wrap:wrap; justify-content:center;">
+          <button class="btn btn-filled" onclick="restartQuiz()">Retake Quiz</button>
+          <a href="index.html" class="btn">← Back to Home</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <p>World's Greatest Cars &nbsp;·&nbsp; Quiz Page — JavaScript Concept</p>
+</footer>
+
+<script>
+// ── QUIZ DATA ──
+var questions = [
+  { q: "Which country manufactures the Porsche 911?", opts: ["Italy","France","Germany","Japan"], ans: 2 },
+  { q: "The Nissan GT-R is nicknamed what by the Australian press?", opts: ["Godzilla","King Kong","Hulk","Thunderbird"], ans: 0 },
+  { q: "Ferrari is headquartered in which Italian city?", opts: ["Rome","Milan","Turin","Maranello"], ans: 3 },
+  { q: "How many McLaren P1 units were ever produced?", opts: ["375","500","750","1000"], ans: 0 },
+  { q: "What engine does the Dodge Viper ACR use?", opts: ["6.2L V8","8.4L V10","5.0L V8","7.0L V12"], ans: 1 },
+  { q: "Which German company owns Ferrari, Lamborghini AND Porsche?", opts: ["BMW Group","Daimler AG","Volkswagen Group","Stellantis"], ans: 2 },
+  { q: "The Bugatti Chiron Super Sport has a top speed of?", opts: ["380 km/h","400 km/h","420 km/h","440 km/h"], ans: 3 },
+  { q: "Which car is known as the flagship of Indian manufacturing in this project?", opts: ["Mahindra Thar","Tata Altroz Racer","Maruti Swift","Kia Seltos"], ans: 1 },
+  { q: "What does BMW stand for in English?", opts: ["British Motor Works","Bavarian Motor Works","Berlin Motor Works","Belgian Motor Works"], ans: 1 },
+  { q: "Which country is home to the McLaren P1 supercar?", opts: ["USA","Germany","Italy","United Kingdom"], ans: 3 },
+];
+
+var current = 0;
+var correct = 0;
+var wrong = 0;
+var answered = false;
+
+function loadQuestion() {
+  if (current >= questions.length) { showResults(); return; }
+
+  var q = questions[current];
+  document.getElementById('q-num').textContent = 'Question ' + (current + 1) + ' of ' + questions.length;
+  document.getElementById('q-text').textContent = q.q;
+  document.getElementById('q-feedback').textContent = '';
+  document.getElementById('q-feedback').className = 'q-feedback';
+  document.getElementById('next-btn').style.display = 'none';
+  document.getElementById('progress').style.width = (current / questions.length * 100) + '%';
+  answered = false;
+
+  var optsEl = document.getElementById('q-options');
+  optsEl.innerHTML = '';
+  q.opts.forEach(function(opt, i) {
+    var btn = document.createElement('button');
+    btn.className = 'q-option';
+    btn.textContent = opt;
+    btn.onclick = function() { if (!answered) answer(i, this); };
+    optsEl.appendChild(btn);
+  });
+}
+
+function answer(chosen, btn) {
+  if (answered) return;
+  answered = true;
+
+  var q = questions[current];
+  var allBtns = document.querySelectorAll('.q-option');
+  allBtns.forEach(function(b) { b.classList.add('disabled'); b.onclick = null; });
+  allBtns[q.ans].classList.add('correct');
+
+  var fb = document.getElementById('q-feedback');
+  if (chosen === q.ans) {
+    correct++;
+    fb.textContent = '✓ Correct! Well done!';
+    fb.className = 'q-feedback ok';
+  } else {
+    wrong++;
+    btn.classList.add('wrong');
+    fb.textContent = '✗ Wrong! The answer was: ' + q.opts[q.ans];
+    fb.className = 'q-feedback err';
+  }
+
+  document.getElementById('live-correct').textContent = correct;
+  document.getElementById('live-wrong').textContent = wrong;
+  document.getElementById('next-btn').style.display = 'block';
+}
+
+function nextQuestion() {
+  current++;
+  loadQuestion();
+}
+
+function showResults() {
+  document.getElementById('quiz-screen').classList.add('hide');
+  document.getElementById('results-screen').classList.add('show');
+  document.getElementById('progress').style.width = '100%';
+
+  var pct = Math.round((correct / questions.length) * 100);
+  document.getElementById('final-correct').textContent = correct;
+  document.getElementById('final-wrong').textContent = wrong;
+  document.getElementById('final-pct').textContent = pct + '%';
+
+  var grade, msg;
+  if (pct >= 90) { grade = 'A+'; msg = '🏆 Outstanding! You are a true car enthusiast!'; }
+  else if (pct >= 80) { grade = 'A'; msg = '🏎️ Excellent! You know your cars well!'; }
+  else if (pct >= 70) { grade = 'B'; msg = '🚗 Good job! Keep exploring the car world!'; }
+  else if (pct >= 60) { grade = 'C'; msg = '🔧 Not bad! Study the country pages more!'; }
+  else { grade = 'F'; msg = '📖 Keep learning! Explore the country pages first!'; }
+
+  document.getElementById('grade-display').textContent = grade;
+  document.getElementById('grade-display').style.color = pct >= 70 ? '#56d364' : '#e63946';
+  document.getElementById('grade-msg').textContent = msg;
+}
+
+function restartQuiz() {
+  current = 0; correct = 0; wrong = 0; answered = false;
+  document.getElementById('quiz-screen').classList.remove('hide');
+  document.getElementById('results-screen').classList.remove('show');
+  document.getElementById('live-correct').textContent = '0';
+  document.getElementById('live-wrong').textContent = '0';
+  loadQuestion();
+}
+
+// Start quiz
+loadQuestion();
+</script>
+</body>
+</html>

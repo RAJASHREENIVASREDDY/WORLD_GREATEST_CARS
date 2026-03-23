@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CarCollection>
+
+  <Country id="germany">
+    <Name>Germany</Name>
+    <Flag>🇩🇪</Flag>
+    <IconicCar>
+      <Model>Porsche 911 GT3</Model>
+      <Brand>Porsche AG</Brand>
+      <TopSpeed>318 km/h</TopSpeed>
+      <Acceleration>3.4s (0-100)</Acceleration>
+      <Horsepower>510 hp</Horsepower>
+      <Engine>4.0L Flat-Six</Engine>
+      <Origin>Stuttgart, Germany</Origin>
+      <Year>1963 (first 911)</Year>
+      <Fact>The 911 has been in continuous production for over 60 years</Fact>
+    </IconicCar>
+  </Country>
+
+  <Country id="italy">
+    <Name>Italy</Name>
+    <Flag>🇮🇹</Flag>
+    <IconicCar>
+      <Model>Ferrari SF90 Stradale</Model>
+      <Brand>Ferrari SpA</Brand>
+      <TopSpeed>340 km/h</TopSpeed>
+      <Acceleration>2.5s (0-100)</Acceleration>
+      <Horsepower>986 hp</Horsepower>
+      <Engine>4.0L V8 Hybrid</Engine>
+      <Origin>Maranello, Italy</Origin>
+      <Year>1947 (Ferrari founded)</Year>
+      <Fact>Ferrari only produces around 14,000 cars per year to maintain exclusivity</Fact>
+    </IconicCar>
+  </Country>
+
+  <Country id="uk">
+    <Name>United Kingdom</Name>
+    <Flag>🇬🇧</Flag>
+    <IconicCar>
+      <Model>McLaren P1</Model>
+      <Brand>McLaren Automotive</Brand>
+      <TopSpeed>350 km/h</TopSpeed>
+      <Acceleration>2.8s (0-100)</Acceleration>
+      <Horsepower>916 hp</Horsepower>
+      <Engine>3.8L Twin-Turbo V8 Hybrid</Engine>
+      <Origin>Woking, England</Origin>
+      <Year>2013</Year>
+      <Fact>Only 375 units of the P1 were ever produced worldwide</Fact>
+    </IconicCar>
+  </Country>
+
+  <Country id="japan">
+    <Name>Japan</Name>
+    <Flag>🇯🇵</Flag>
+    <IconicCar>
+      <Model>Nissan GT-R R35</Model>
+      <Brand>Nissan Motor Co.</Brand>
+      <TopSpeed>315 km/h</TopSpeed>
+      <Acceleration>2.7s (0-100)</Acceleration>
+      <Horsepower>565 hp</Horsepower>
+      <Engine>3.8L Twin-Turbo V6</Engine>
+      <Origin>Yokohama, Japan</Origin>
+      <Year>2007</Year>
+      <Fact>The GT-R was nicknamed Godzilla by Australian motoring press</Fact>
+    </IconicCar>
+  </Country>
+
+  <Country id="usa">
+    <Name>United States</Name>
+    <Flag>🇺🇸</Flag>
+    <IconicCar>
+      <Model>Dodge Viper ACR</Model>
+      <Brand>Dodge (Stellantis)</Brand>
+      <TopSpeed>330 km/h</TopSpeed>
+      <Acceleration>3.5s (0-100)</Acceleration>
+      <Horsepower>645 hp</Horsepower>
+      <Engine>8.4L V10</Engine>
+      <Origin>Detroit, Michigan</Origin>
+      <Year>1991</Year>
+      <Fact>The Viper ACR holds more than 13 production car lap records</Fact>
+    </IconicCar>
+  </Country>
+
+  <Country id="india">
+    <Name>India</Name>
+    <Flag>🇮🇳</Flag>
+    <IconicCar>
+      <Model>Tata Altroz Racer</Model>
+      <Brand>Tata Motors</Brand>
+      <TopSpeed>180 km/h</TopSpeed>
+      <Acceleration>8.2s (0-100)</Acceleration>
+      <Horsepower>120 hp</Horsepower>
+      <Engine>1.2L Turbocharged</Engine>
+      <Origin>Mumbai, India</Origin>
+      <Year>2023</Year>
+      <Fact>Tata Motors is India's largest automobile manufacturer</Fact>
+    </IconicCar>
+  </Country>
+
+</CarCollection>

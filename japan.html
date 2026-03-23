@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Japan — World's Greatest Cars</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .country-hero{padding:60px 0 40px;position:relative}.country-flag-bg{font-size:120px;position:absolute;right:0;top:30px;opacity:.08;pointer-events:none;user-select:none}.country-name{font-family:'Bebas Neue',sans-serif;font-size:clamp(48px,8vw,90px);letter-spacing:5px;line-height:1}.country-name span{color:var(--accent)}.car-name-big{font-family:'Bebas Neue',sans-serif;font-size:clamp(26px,4vw,42px);letter-spacing:3px;color:var(--muted);margin-bottom:30px}.spec-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin-bottom:30px}.spec-box{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:18px;text-align:center}.spec-val{font-family:'Bebas Neue',sans-serif;font-size:30px;letter-spacing:2px;color:var(--accent);line-height:1}.spec-lbl{font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-top:6px}.fact-box{background:rgba(230,57,70,.06);border:1px solid rgba(230,57,70,.2);border-radius:10px;padding:20px 24px;margin-bottom:30px}.fact-box .label{font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--accent);letter-spacing:3px;text-transform:uppercase;margin-bottom:8px}.other-cars{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}.other-car{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:18px}.other-car h4{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:2px;margin-bottom:4px;color:var(--text)}.other-car p{font-size:13px;color:var(--muted)}.nav-countries{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:40px}.nav-countries a{font-family:'Share Tech Mono',monospace;font-size:11px;padding:5px 12px;border:1px solid var(--border);border-radius:6px;color:var(--muted);text-decoration:none;transition:all .2s}.nav-countries a:hover,.nav-countries a.active{color:var(--text);border-color:var(--accent)}
+  </style>
+</head>
+<body>
+<nav class="navbar">
+  <a href="index.html" class="nav-logo">AUTOCARTA</a>
+  <div class="nav-links"><a href="index.html">Home</a><a href="links.html">Countries</a><a href="tables.html">Spec Table</a><a href="quiz.html">Quiz</a></div>
+</nav>
+<div class="page-wrap">
+  <div class="nav-countries">
+    <a href="germany.html">🇩🇪 Germany</a><a href="italy.html">🇮🇹 Italy</a><a href="uk.html">🇬🇧 UK</a><a href="japan.html" class="active">🇯🇵 Japan</a><a href="usa.html">🇺🇸 USA</a><a href="india.html">🇮🇳 India</a>
+  </div>
+  <div class="country-hero">
+    <div class="country-flag-bg">🇯🇵</div>
+    <div class="concept-badge">Country Page</div>
+    <div class="country-name"><span>Japan</span></div>
+    <div class="car-name-big">Nissan GT-R R35</div>
+  </div>
+  <div class="spec-grid">
+    <div class="spec-box"><div class="spec-val">315</div><div class="spec-lbl">Top Speed (km/h)</div></div>
+    <div class="spec-box"><div class="spec-val">2.7s</div><div class="spec-lbl">0-100 km/h</div></div>
+    <div class="spec-box"><div class="spec-val">565</div><div class="spec-lbl">Horsepower</div></div>
+    <div class="spec-box"><div class="spec-val">3.8L</div><div class="spec-lbl">Engine</div></div>
+    <div class="spec-box"><div class="spec-val">2007</div><div class="spec-lbl">R35 Launch Year</div></div>
+    <div class="spec-box"><div class="spec-val">AWD</div><div class="spec-lbl">Drive System</div></div>
+  </div>
+  <div class="card fade-up">
+    <div class="card-label">About the Nissan GT-R R35</div>
+    <p style="color:var(--muted);line-height:1.9;">The Nissan GT-R R35 is Japan's answer to European supercars — available at a fraction of their price. Its 3.8-litre twin-turbocharged V6 sends power to all four wheels through Nissan's ATTESA E-TS AWD system, giving it extraordinary traction and stability at high speeds. The GT-R gained the nickname "Godzilla" from the Australian motoring press for its ability to destroy much more expensive competitors on any track.</p>
+  </div>
+  <div class="fact-box">
+    <div class="label">Fun Fact</div>
+    <p>Every GT-R engine is hand-built by a single master craftsman called a Takumi. Each Takumi's name plate is attached to the engine. It takes approximately one hour to assemble each engine in a dust-free, climate-controlled room.</p>
+  </div>
+  <div class="card fade-up">
+    <div class="card-label">Other Iconic Japanese Cars</div>
+    <div class="other-cars">
+      <div class="other-car"><h4>Toyota GR Supra</h4><p>3.0L Turbo I6 · 382 hp · 4.3s</p></div>
+      <div class="other-car"><h4>Honda NSX Type R</h4><p>3.5L V6 Hybrid · 600 hp · 3.0s</p></div>
+      <div class="other-car"><h4>Mazda RX-7</h4><p>1.3L Rotary Turbo · 280 hp · 5.3s</p></div>
+      <div class="other-car"><h4>Subaru WRX STI</h4><p>2.5L Flat-4 Turbo · 310 hp · 5.1s</p></div>
+    </div>
+  </div>
+  <div class="card fade-up">
+    <div class="card-label">Nissan GT-R Evolution — HTML Table</div>
+    <table class="styled-table">
+      <thead><tr><th>Generation</th><th>Years</th><th>HP</th><th>0-100</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td><strong>R32 GT-R</strong></td><td>1989–1994</td><td>280 hp</td><td>5.4s</td><td>Original Godzilla</td></tr>
+        <tr><td><strong>R33 GT-R</strong></td><td>1995–1998</td><td>280 hp</td><td>4.9s</td><td>Nürburgring record</td></tr>
+        <tr><td><strong>R34 GT-R</strong></td><td>1999–2002</td><td>280 hp</td><td>4.9s</td><td>Most iconic gen</td></tr>
+        <tr><td><strong>R35 GT-R</strong></td><td>2007–now</td><td>565 hp</td><td>2.7s</td><td>Modern Godzilla</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div style="display:flex;gap:12px;flex-wrap:wrap;">
+    <a href="uk.html" class="btn">← UK</a>
+    <a href="usa.html" class="btn btn-filled">Next: USA 🇺🇸 →</a>
+    <a href="quiz.html" class="btn">Take the Quiz 🏁</a>
+  </div>
+</div>
+<footer><p>World's Greatest Cars &nbsp;·&nbsp; Japan Page</p></footer>
+</body>
+</html>

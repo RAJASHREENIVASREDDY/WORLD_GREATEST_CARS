@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tables — World's Greatest Cars</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .speed-bar-wrap { width: 90px; height: 6px; background: var(--border); border-radius: 3px; display: inline-block; vertical-align: middle; margin-left: 8px; }
+    .speed-bar-fill { height: 100%; border-radius: 3px; background: var(--accent); }
+    .rank-num { font-family: 'Bebas Neue', sans-serif; font-size: 22px; color: var(--accent); }
+    .hp-badge { display: inline-block; padding: 2px 10px; border-radius: 10px; font-family: 'Share Tech Mono', monospace; font-size: 11px; background: rgba(230,57,70,0.12); color: var(--accent); border: 1px solid rgba(230,57,70,0.25); }
+    .table-section { margin-bottom: 40px; }
+    .table-wrap { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+    .table-header { padding: 16px 22px; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
+    .table-header h3 { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 2px; }
+    .table-header span { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--muted); letter-spacing: 2px; }
+    tfoot td { background: var(--surface); font-family: 'Share Tech Mono', monospace; font-size: 11px; color: var(--muted); letter-spacing: 1px; padding: 10px 16px; border-top: 1px solid var(--border); }
+    .colspan-header { background: rgba(230,57,70,0.08); color: var(--accent); font-family: 'Share Tech Mono', monospace; font-size: 10px; letter-spacing: 2px; text-align: center; border-bottom: 1px solid var(--border); }
+  </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <a href="index.html" class="nav-logo">AUTOCARTA</a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="css.html">CSS</a>
+    <a href="xml.html">XML</a>
+    <a href="tables.html" class="active">Tables</a>
+    <a href="links.html">Links</a>
+    <a href="javascript.html">JavaScript</a>
+    <a href="quiz.html">Quiz</a>
+  </div>
+</nav>
+
+<div class="page-wrap">
+
+  <div class="concept-badge">Web Concept</div>
+  <div class="section-title">HTML <span>Tables</span></div>
+  <div class="section-sub">Organizing car data in rows, columns, colspan and rowspan</div>
+
+  <!-- TABLE 1: BASIC SPEC TABLE -->
+  <div class="table-section card fade-up">
+    <div class="card-label">Table 1 — Basic Car Specs (tr, th, td)</div>
+    <p style="color:var(--muted); margin-bottom:16px;">A basic HTML table using <code style="font-family:'Share Tech Mono',monospace; color:var(--accent);">&lt;table&gt;</code>, <code style="font-family:'Share Tech Mono',monospace; color:var(--accent);">&lt;tr&gt;</code>, <code style="font-family:'Share Tech Mono',monospace; color:var(--accent);">&lt;th&gt;</code>, and <code style="font-family:'Share Tech Mono',monospace; color:var(--accent);">&lt;td&gt;</code> tags.</p>
+
+    <div class="code-box">
+      <div class="code-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="filename">Basic Table Structure</span></div>
+      <pre><span class="k">&lt;table&gt;</span>
+  <span class="k">&lt;thead&gt;</span>
+    <span class="k">&lt;tr&gt;</span>
+      <span class="k">&lt;th&gt;</span>Flag<span class="k">&lt;/th&gt;</span>
+      <span class="k">&lt;th&gt;</span>Car Model<span class="k">&lt;/th&gt;</span>
+      <span class="k">&lt;th&gt;</span>Top Speed<span class="k">&lt;/th&gt;</span>
+    <span class="k">&lt;/tr&gt;</span>
+  <span class="k">&lt;/thead&gt;</span>
+  <span class="k">&lt;tbody&gt;</span>
+    <span class="k">&lt;tr&gt;</span>
+      <span class="k">&lt;td&gt;</span>🇩🇪<span class="k">&lt;/td&gt;</span>
+      <span class="k">&lt;td&gt;</span>Porsche 911 GT3<span class="k">&lt;/td&gt;</span>
+      <span class="k">&lt;td&gt;</span>318 km/h<span class="k">&lt;/td&gt;</span>
+    <span class="k">&lt;/tr&gt;</span>
+  <span class="k">&lt;/tbody&gt;</span>
+<span class="k">&lt;/table&gt;</span></pre>
+    </div>
+  </div>
+
+  <!-- TABLE 1 LIVE -->
+  <div class="table-section">
+    <div class="table-wrap">
+      <div class="table-header">
+        <h3>🏎️ Speed Rankings</h3>
+        <span>Basic Table — thead, tbody, tr, th, td</span>
+      </div>
+      <table class="styled-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Flag</th>
+            <th>Car Model</th>
+            <th>Country</th>
+            <th>Top Speed</th>
+            <th>0-100 km/h</th>
+            <th>HP</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="rank-num">1</span></td>
+            <td class="flag">🇫🇷</td>
+            <td><strong>Bugatti Chiron Super Sport</strong></td>
+            <td>France / Italy</td>
+            <td>440 km/h <span class="speed-bar-wrap"><span class="speed-bar-fill" style="width:100%"></span></span></td>
+            <td>2.3s</td>
+            <td><span class="hp-badge">1600 hp</span></td>
+          </tr>
+          <tr>
+            <td><span class="rank-num">2</span></td>
+            <td class="flag">🇬🇧</td>
+            <td><strong>McLaren P1</strong></td>
+            <td>United Kingdom</td>
+            <td>350 km/h <span class="speed-bar-wrap"><span class="speed-bar-fill" style="width:79%"></span></span></td>
+            <td>2.8s</td>
+            <td><span class="hp-badge">916 hp</span></td>
+          </tr>
+          <tr>
+            <td><span class="rank-num">3</span></td>
+            <td class="flag">🇮🇹</td>
+            <td><strong>Ferrari SF90 Stradale</strong></td>
+            <td>Italy</td>
+            <td>340 km/h <span class="speed-bar-wrap"><span class="speed-bar-fill" style="width:77%"></span></span></td>
+            <td>2.5s</td>
+            <td><span class="hp-badge">986 hp</span></td>
+          </tr>
+          <tr>
+            <td><span class="rank-num">4</span></td>
+            <td class="flag">🇺🇸</td>
+            <td><strong>Dodge Viper ACR</strong></td>
+            <td>United States</td>
+            <td>330 km/h <span class="speed-bar-wrap"><span class="speed-bar-fill" style="width:75%"></span></span></td>
+            <td>3.5s</td>
+            <td><span class="hp-badge">645 hp</span></td>
+          </tr>
+          <tr>
+            <td><span class="rank-num">5</span></td>
+            <td class="flag">🇩🇪</td>
+            <td><strong>Porsche 911 GT3</strong></td>
+            <td>Germany</td>
+            <td>318 km/h <span class="speed-bar-wrap"><span class="speed-bar-fill" style="width:72%"></span></span></td>
+            <td>3.4s</td>
+            <td><span class="hp-badge">510 hp</span></td>
+          </tr>
+          <tr>
+            <td><span class="rank-num">6</span></td>
+            <td class="flag">🇯🇵</td>
+            <td><strong>Nissan GT-R R35</strong></td>
+            <td>Japan</td>
+            <td>315 km/h <span class="speed-bar-wrap"><span class="speed-bar-fill" style="width:71%"></span></span></td>
+            <td>2.7s</td>
+            <td><span class="hp-badge">565 hp</span></td>
+          </tr>
+          <tr>
+            <td><span class="rank-num">7</span></td>
+            <td class="flag">🇮🇳</td>
+            <td><strong>Tata Altroz Racer</strong></td>
+            <td>India</td>
+            <td>180 km/h <span class="speed-bar-wrap"><span class="speed-bar-fill" style="width:40%"></span></span></td>
+            <td>8.2s</td>
+            <td><span class="hp-badge">120 hp</span></td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="7">Data sourced for educational project — World's Greatest Cars</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+
+  <!-- TABLE 2: COLSPAN + ROWSPAN -->
+  <div class="table-section card fade-up">
+    <div class="card-label">Table 2 — Colspan & Rowspan</div>
+    <p style="color:var(--muted); margin-bottom:16px;"><code style="font-family:'Share Tech Mono',monospace; color:var(--accent);">colspan</code> merges columns horizontally. <code style="font-family:'Share Tech Mono',monospace; color:var(--accent);">rowspan</code> merges rows vertically.</p>
+
+    <div class="code-box">
+      <div class="code-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="filename">colspan and rowspan example</span></div>
+      <pre><span class="k">&lt;tr&gt;</span>
+  <span class="c">&lt;!-- colspan="2" spans across 2 columns --&gt;</span>
+  <span class="k">&lt;th</span> <span class="t">colspan</span>=<span class="s">"2"</span><span class="k">&gt;</span>Performance<span class="k">&lt;/th&gt;</span>
+  <span class="k">&lt;th</span> <span class="t">colspan</span>=<span class="s">"2"</span><span class="k">&gt;</span>Engine<span class="k">&lt;/th&gt;</span>
+<span class="k">&lt;/tr&gt;</span>
+<span class="k">&lt;tr&gt;</span>
+  <span class="c">&lt;!-- rowspan="2" spans across 2 rows --&gt;</span>
+  <span class="k">&lt;td</span> <span class="t">rowspan</span>=<span class="s">"2"</span><span class="k">&gt;</span>Germany<span class="k">&lt;/td&gt;</span>
+  <span class="k">&lt;td&gt;</span>Porsche 911<span class="k">&lt;/td&gt;</span>
+<span class="k">&lt;/tr&gt;</span></pre>
+    </div>
+  </div>
+
+  <!-- TABLE 2 LIVE: COLSPAN + ROWSPAN -->
+  <div class="table-section">
+    <div class="table-wrap">
+      <div class="table-header">
+        <h3>🌍 Cars by Country — Colspan & Rowspan</h3>
+        <span>Advanced Table — colspan, rowspan</span>
+      </div>
+      <table class="styled-table">
+        <thead>
+          <tr>
+            <!-- colspan spans across multiple columns -->
+            <th rowspan="2">Country</th>
+            <th rowspan="2">Flag</th>
+            <th colspan="2" class="colspan-header">Performance</th>
+            <th colspan="2" class="colspan-header">Engine</th>
+          </tr>
+          <tr>
+            <th>Top Speed</th>
+            <th>0-100</th>
+            <th>Type</th>
+            <th>HP</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- rowspan: Germany has 2 cars, so country cell spans 2 rows -->
+          <tr>
+            <td rowspan="2"><strong>Germany 🇩🇪</strong></td>
+            <td>🏎️ Porsche 911 GT3</td>
+            <td>318 km/h</td>
+            <td>3.4s</td>
+            <td>4.0L Flat-Six</td>
+            <td><span class="hp-badge">510 hp</span></td>
+          </tr>
+          <tr>
+            <!-- No country cell here — rowspan covers it -->
+            <td>🚗 BMW M5 CS</td>
+            <td>305 km/h</td>
+            <td>3.0s</td>
+            <td>4.4L V8 Turbo</td>
+            <td><span class="hp-badge">627 hp</span></td>
+          </tr>
+          <tr>
+            <td rowspan="2"><strong>Italy 🇮🇹</strong></td>
+            <td>🏎️ Ferrari SF90</td>
+            <td>340 km/h</td>
+            <td>2.5s</td>
+            <td>4.0L V8 Hybrid</td>
+            <td><span class="hp-badge">986 hp</span></td>
+          </tr>
+          <tr>
+            <td>🐂 Lamborghini Huracán</td>
+            <td>325 km/h</td>
+            <td>2.9s</td>
+            <td>5.2L V10</td>
+            <td><span class="hp-badge">630 hp</span></td>
+          </tr>
+          <tr>
+            <td><strong>Japan 🇯🇵</strong></td>
+            <td>👹 Nissan GT-R</td>
+            <td>315 km/h</td>
+            <td>2.7s</td>
+            <td>3.8L TT V6</td>
+            <td><span class="hp-badge">565 hp</span></td>
+          </tr>
+          <tr>
+            <td><strong>UK 🇬🇧</strong></td>
+            <td>🕷️ McLaren P1</td>
+            <td>350 km/h</td>
+            <td>2.8s</td>
+            <td>3.8L TT V8</td>
+            <td><span class="hp-badge">916 hp</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div style="display:flex; gap:12px; flex-wrap:wrap;">
+    <a href="xml.html" class="btn">← XML</a>
+    <a href="links.html" class="btn btn-filled">Next: Links →</a>
+  </div>
+
+</div>
+
+<footer>
+  <p>World's Greatest Cars &nbsp;·&nbsp; Tables Concept Page</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>India — World's Greatest Cars</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .country-hero{padding:60px 0 40px;position:relative}.country-flag-bg{font-size:120px;position:absolute;right:0;top:30px;opacity:.08;pointer-events:none;user-select:none}.country-name{font-family:'Bebas Neue',sans-serif;font-size:clamp(48px,8vw,90px);letter-spacing:5px;line-height:1}.country-name span{color:var(--accent)}.car-name-big{font-family:'Bebas Neue',sans-serif;font-size:clamp(26px,4vw,42px);letter-spacing:3px;color:var(--muted);margin-bottom:30px}.spec-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin-bottom:30px}.spec-box{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:18px;text-align:center}.spec-val{font-family:'Bebas Neue',sans-serif;font-size:30px;letter-spacing:2px;color:var(--accent);line-height:1}.spec-lbl{font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-top:6px}.fact-box{background:rgba(230,57,70,.06);border:1px solid rgba(230,57,70,.2);border-radius:10px;padding:20px 24px;margin-bottom:30px}.fact-box .label{font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--accent);letter-spacing:3px;text-transform:uppercase;margin-bottom:8px}.other-cars{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}.other-car{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:18px}.other-car h4{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:2px;margin-bottom:4px;color:var(--text)}.other-car p{font-size:13px;color:var(--muted)}.nav-countries{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:40px}.nav-countries a{font-family:'Share Tech Mono',monospace;font-size:11px;padding:5px 12px;border:1px solid var(--border);border-radius:6px;color:var(--muted);text-decoration:none;transition:all .2s}.nav-countries a:hover,.nav-countries a.active{color:var(--text);border-color:var(--accent)}
+  </style>
+</head>
+<body>
+<nav class="navbar">
+  <a href="index.html" class="nav-logo">AUTOCARTA</a>
+  <div class="nav-links"><a href="index.html">Home</a><a href="links.html">Countries</a><a href="tables.html">Spec Table</a><a href="quiz.html">Quiz</a></div>
+</nav>
+<div class="page-wrap">
+  <div class="nav-countries">
+    <a href="germany.html">🇩🇪 Germany</a><a href="italy.html">🇮🇹 Italy</a><a href="uk.html">🇬🇧 UK</a><a href="japan.html">🇯🇵 Japan</a><a href="usa.html">🇺🇸 USA</a><a href="india.html" class="active">🇮🇳 India</a>
+  </div>
+  <div class="country-hero">
+    <div class="country-flag-bg">🇮🇳</div>
+    <div class="concept-badge">Country Page</div>
+    <div class="country-name"><span>India</span></div>
+    <div class="car-name-big">Tata Altroz Racer</div>
+  </div>
+  <div class="spec-grid">
+    <div class="spec-box"><div class="spec-val">180</div><div class="spec-lbl">Top Speed (km/h)</div></div>
+    <div class="spec-box"><div class="spec-val">8.2s</div><div class="spec-lbl">0-100 km/h</div></div>
+    <div class="spec-box"><div class="spec-val">120</div><div class="spec-lbl">Horsepower</div></div>
+    <div class="spec-box"><div class="spec-val">1.2L</div><div class="spec-lbl">Turbo Engine</div></div>
+    <div class="spec-box"><div class="spec-val">1945</div><div class="spec-lbl">Tata Founded</div></div>
+    <div class="spec-box"><div class="spec-val">#1</div><div class="spec-lbl">India Auto Rank</div></div>
+  </div>
+  <div class="card fade-up">
+    <div class="card-label">About the Tata Altroz Racer</div>
+    <p style="color:var(--muted);line-height:1.9;">The Tata Altroz Racer is India's most exciting hot hatchback, launched in 2023. It uses a 1.2-litre turbocharged petrol engine producing 120 horsepower — significant for a vehicle in its class and price point. Tata Motors has transformed its image dramatically in recent years, winning 5-star Euro NCAP safety ratings and launching electric vehicles. The Altroz Racer represents India's growing confidence in building driver-focused performance cars for the domestic market.</p>
+  </div>
+  <div class="fact-box">
+    <div class="label">Fun Fact</div>
+    <p>Tata Motors is India's largest automobile manufacturer and also owns Jaguar and Land Rover — two of Britain's most prestigious car brands! So when you buy a Jaguar in England, it's owned by an Indian company.</p>
+  </div>
+  <div class="card fade-up">
+    <div class="card-label">Other Iconic Indian Cars</div>
+    <div class="other-cars">
+      <div class="other-car"><h4>Mahindra Thar Roxx</h4><p>2.0L Turbo · 177 hp · Off-road beast</p></div>
+      <div class="other-car"><h4>Tata Nexon EV</h4><p>Electric · 143 hp · 437 km range</p></div>
+      <div class="other-car"><h4>Kia Seltos GT Line</h4><p>1.4L Turbo · 138 hp · Most loved</p></div>
+      <div class="other-car"><h4>Maruti Suzuki Brezza</h4><p>1.5L Hybrid · 102 hp · Best seller</p></div>
+    </div>
+  </div>
+  <div class="card fade-up">
+    <div class="card-label">Indian Auto Market — HTML Table</div>
+    <table class="styled-table">
+      <thead><tr><th>Brand</th><th>HQ</th><th>Best Model</th><th>Strength</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Tata Motors</strong></td><td>Mumbai</td><td>Nexon EV</td><td>Safety + Electric</td></tr>
+        <tr><td><strong>Mahindra</strong></td><td>Mumbai</td><td>Thar Roxx</td><td>Off-road + SUVs</td></tr>
+        <tr><td><strong>Maruti Suzuki</strong></td><td>New Delhi</td><td>Baleno</td><td>Volume + Value</td></tr>
+        <tr><td><strong>Bajaj Auto</strong></td><td>Pune</td><td>Pulsar RS200</td><td>Bikes + Budget</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div style="display:flex;gap:12px;flex-wrap:wrap;">
+    <a href="usa.html" class="btn">← USA</a>
+    <a href="index.html" class="btn btn-filled">🏠 Back to Home</a>
+    <a href="quiz.html" class="btn">Take the Quiz 🏁</a>
+  </div>
+</div>
+<footer><p>World's Greatest Cars &nbsp;·&nbsp; India Page</p></footer>
+</body>
+</html>

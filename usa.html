@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>USA — World's Greatest Cars</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .country-hero{padding:60px 0 40px;position:relative}.country-flag-bg{font-size:120px;position:absolute;right:0;top:30px;opacity:.08;pointer-events:none;user-select:none}.country-name{font-family:'Bebas Neue',sans-serif;font-size:clamp(48px,8vw,90px);letter-spacing:5px;line-height:1}.country-name span{color:var(--accent)}.car-name-big{font-family:'Bebas Neue',sans-serif;font-size:clamp(26px,4vw,42px);letter-spacing:3px;color:var(--muted);margin-bottom:30px}.spec-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin-bottom:30px}.spec-box{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:18px;text-align:center}.spec-val{font-family:'Bebas Neue',sans-serif;font-size:30px;letter-spacing:2px;color:var(--accent);line-height:1}.spec-lbl{font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-top:6px}.fact-box{background:rgba(230,57,70,.06);border:1px solid rgba(230,57,70,.2);border-radius:10px;padding:20px 24px;margin-bottom:30px}.fact-box .label{font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--accent);letter-spacing:3px;text-transform:uppercase;margin-bottom:8px}.other-cars{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}.other-car{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:18px}.other-car h4{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:2px;margin-bottom:4px;color:var(--text)}.other-car p{font-size:13px;color:var(--muted)}.nav-countries{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:40px}.nav-countries a{font-family:'Share Tech Mono',monospace;font-size:11px;padding:5px 12px;border:1px solid var(--border);border-radius:6px;color:var(--muted);text-decoration:none;transition:all .2s}.nav-countries a:hover,.nav-countries a.active{color:var(--text);border-color:var(--accent)}
+  </style>
+</head>
+<body>
+<nav class="navbar">
+  <a href="index.html" class="nav-logo">AUTOCARTA</a>
+  <div class="nav-links"><a href="index.html">Home</a><a href="links.html">Countries</a><a href="tables.html">Spec Table</a><a href="quiz.html">Quiz</a></div>
+</nav>
+<div class="page-wrap">
+  <div class="nav-countries">
+    <a href="germany.html">🇩🇪 Germany</a><a href="italy.html">🇮🇹 Italy</a><a href="uk.html">🇬🇧 UK</a><a href="japan.html">🇯🇵 Japan</a><a href="usa.html" class="active">🇺🇸 USA</a><a href="india.html">🇮🇳 India</a>
+  </div>
+  <div class="country-hero">
+    <div class="country-flag-bg">🇺🇸</div>
+    <div class="concept-badge">Country Page</div>
+    <div class="country-name"><span>United States</span></div>
+    <div class="car-name-big">Dodge Viper ACR</div>
+  </div>
+  <div class="spec-grid">
+    <div class="spec-box"><div class="spec-val">330</div><div class="spec-lbl">Top Speed (km/h)</div></div>
+    <div class="spec-box"><div class="spec-val">3.5s</div><div class="spec-lbl">0-100 km/h</div></div>
+    <div class="spec-box"><div class="spec-val">645</div><div class="spec-lbl">Horsepower</div></div>
+    <div class="spec-box"><div class="spec-val">8.4L</div><div class="spec-lbl">V10 Engine</div></div>
+    <div class="spec-box"><div class="spec-val">13+</div><div class="spec-lbl">Track Records</div></div>
+    <div class="spec-box"><div class="spec-val">1991</div><div class="spec-lbl">First Viper</div></div>
+  </div>
+  <div class="card fade-up">
+    <div class="card-label">About the Dodge Viper ACR</div>
+    <p style="color:var(--muted);line-height:1.9;">The Dodge Viper ACR (American Club Racer) is pure, undiluted American muscle on a track. Its massive 8.4-litre V10 engine produces 645 horsepower with no turbochargers, no superchargers, no hybrid system — just raw displacement. The ACR holds more than 13 production car lap records at various racetracks worldwide, including the legendary Laguna Seca and Virginia International Raceway. It's considered one of the greatest track-day cars ever built.</p>
+  </div>
+  <div class="fact-box">
+    <div class="label">Fun Fact</div>
+    <p>The Viper ACR was so loud that Dodge had to fit a special exhaust system just to be allowed into certain racetracks. The car's aerodynamic package — including its massive rear wing — generates more downforce than many actual race cars.</p>
+  </div>
+  <div class="card fade-up">
+    <div class="card-label">Other Iconic American Cars</div>
+    <div class="other-cars">
+      <div class="other-car"><h4>Chevrolet Corvette Z06</h4><p>5.5L Flat-Plane V8 · 670 hp · 2.6s</p></div>
+      <div class="other-car"><h4>Ford Mustang Shelby GT500</h4><p>5.2L Supercharged V8 · 760 hp · 3.3s</p></div>
+      <div class="other-car"><h4>Hennessey Venom F5</h4><p>6.6L TT V8 · 1817 hp · 2.4s</p></div>
+      <div class="other-car"><h4>Cadillac CT5-V Blackwing</h4><p>6.2L SC V8 · 668 hp · 3.7s</p></div>
+    </div>
+  </div>
+  <div class="card fade-up">
+    <div class="card-label">Viper Generations — HTML Table</div>
+    <table class="styled-table">
+      <thead><tr><th>Generation</th><th>Years</th><th>HP</th><th>Engine</th><th>Notable</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Gen 1</strong></td><td>1992–1995</td><td>400 hp</td><td>8.0L V10</td><td>Born from Lamborghini collab</td></tr>
+        <tr><td><strong>Gen 2</strong></td><td>1996–2002</td><td>450 hp</td><td>8.0L V10</td><td>Added coupe body</td></tr>
+        <tr><td><strong>Gen 4 SRT</strong></td><td>2008–2010</td><td>600 hp</td><td>8.4L V10</td><td>New larger engine</td></tr>
+        <tr><td><strong>Gen 5 ACR</strong></td><td>2015–2017</td><td>645 hp</td><td>8.4L V10</td><td>13+ track records</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div style="display:flex;gap:12px;flex-wrap:wrap;">
+    <a href="japan.html" class="btn">← Japan</a>
+    <a href="india.html" class="btn btn-filled">Next: India 🇮🇳 →</a>
+    <a href="quiz.html" class="btn">Take the Quiz 🏁</a>
+  </div>
+</div>
+<footer><p>World's Greatest Cars &nbsp;·&nbsp; USA Page</p></footer>
+</body>
+</html>

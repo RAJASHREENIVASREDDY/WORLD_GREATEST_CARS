@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Concepts — World's Greatest Cars</title>
+
+  <!-- EXTERNAL CSS: linking the shared stylesheet -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- INTERNAL CSS: styles specific to this page only -->
+  <style>
+    .css-demo-box {
+      border-radius: 8px;
+      padding: 18px 22px;
+      margin: 12px 0;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .css-type-label {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 10px;
+    }
+    .inline-label { background: rgba(230,57,70,0.15); color: #e63946; border: 1px solid rgba(230,57,70,0.3); }
+    .internal-label { background: rgba(86,211,100,0.1); color: #56d364; border: 1px solid rgba(86,211,100,0.3); }
+    .external-label { background: rgba(88,166,255,0.1); color: #58a6ff; border: 1px solid rgba(88,166,255,0.3); }
+
+    .car-theme-demo {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 14px;
+      margin: 20px 0;
+    }
+    .theme-card {
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+    }
+    .theme-card h4 { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 2px; margin-bottom: 6px; }
+    .theme-card p { font-size: 12px; opacity: 0.75; }
+
+    /* Internal CSS: three different car-brand themes */
+    .ferrari-theme { background: #8b0000; color: #fff; border: 1px solid #cc0000; }
+    .bmw-theme { background: #003087; color: #fff; border: 1px solid #0066cc; }
+    .lamborghini-theme { background: #4a3c00; color: #f5c518; border: 1px solid #c9a800; }
+  </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <a href="index.html" class="nav-logo">AUTOCARTA</a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="css.html" class="active">CSS</a>
+    <a href="xml.html">XML</a>
+    <a href="tables.html">Tables</a>
+    <a href="links.html">Links</a>
+    <a href="javascript.html">JavaScript</a>
+    <a href="quiz.html">Quiz</a>
+  </div>
+</nav>
+
+<div class="page-wrap">
+
+  <div class="concept-badge">Web Concept</div>
+  <div class="section-title">CSS <span>Styling</span></div>
+  <div class="section-sub">Three ways to style HTML — all demonstrated in this car project</div>
+
+  <!-- 1. INLINE CSS -->
+  <div class="card fade-up">
+    <div class="card-label">01 — Inline CSS</div>
+    <p style="margin-bottom:14px; color:var(--muted);">Inline CSS is written directly inside an HTML element using the <code style="background:var(--surface); padding:2px 6px; border-radius:4px; font-family:'Share Tech Mono',monospace; color:var(--accent);">style=""</code> attribute. It only affects that single element.</p>
+
+    <div class="code-box">
+      <div class="code-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="filename">Inline CSS Example</span></div>
+      <pre><span class="c">&lt;!-- INLINE CSS: style applied directly on the element --&gt;</span>
+<span class="k">&lt;p</span> <span class="t">style</span>=<span class="s">"color: red; font-size: 20px; border: 2px solid red; padding: 10px;"</span><span class="k">&gt;</span>
+    Ferrari — Rosso Corsa (Racing Red)
+<span class="k">&lt;/p&gt;</span>
+
+<span class="k">&lt;p</span> <span class="t">style</span>=<span class="s">"color: #003087; font-weight: bold; background: #e8f0ff; padding: 10px;"</span><span class="k">&gt;</span>
+    BMW — Bavarian Blue Heritage
+<span class="k">&lt;/p&gt;</span></pre>
+    </div>
+
+    <div class="output-label">Live Output</div>
+    <div class="output-box">
+      <!-- INLINE CSS CONCEPT live demo -->
+      <p style="color: red; font-size: 16px; border: 2px solid red; padding: 10px; border-radius:6px; margin-bottom:10px;">🇮🇹 Ferrari — Rosso Corsa (Racing Red)</p>
+      <p style="color: #003087; font-weight: bold; background: #e8f0ff; padding: 10px; border-radius:6px; color:#003087;">🇩🇪 BMW — Bavarian Blue Heritage</p>
+    </div>
+
+    <div class="css-demo-box" style="background: rgba(230,57,70,0.05); border: 1px solid rgba(230,57,70,0.15);">
+      <span>Advantage: Quick, no extra files needed</span>
+      <span class="css-type-label inline-label">Inline</span>
+    </div>
+    <div class="css-demo-box" style="background: rgba(230,57,70,0.03); border: 1px dashed rgba(230,57,70,0.1);">
+      <span>Disadvantage: Hard to maintain, can't reuse styles</span>
+      <span style="font-size:12px; color:var(--muted); font-family:'Share Tech Mono',monospace;">Best for: quick one-off overrides</span>
+    </div>
+  </div>
+
+  <!-- 2. INTERNAL CSS -->
+  <div class="card fade-up">
+    <div class="card-label">02 — Internal CSS</div>
+    <p style="margin-bottom:14px; color:var(--muted);">Internal CSS is written inside a <code style="background:var(--surface); padding:2px 6px; border-radius:4px; font-family:'Share Tech Mono',monospace; color:var(--accent);">&lt;style&gt;</code> block in the HTML &lt;head&gt;. It applies to the whole page.</p>
+
+    <div class="code-box">
+      <div class="code-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="filename">Internal CSS — inside &lt;head&gt;</span></div>
+      <pre><span class="k">&lt;head&gt;</span>
+  <span class="k">&lt;style&gt;</span>
+    <span class="c">/* INTERNAL CSS: car brand color themes */</span>
+    <span class="v">.ferrari-theme</span> {
+      <span class="t">background:</span> <span class="s">#8b0000</span>;
+      <span class="t">color:</span> <span class="s">#fff</span>;
+      <span class="t">border:</span> <span class="s">1px solid #cc0000</span>;
+    }
+    <span class="v">.bmw-theme</span> {
+      <span class="t">background:</span> <span class="s">#003087</span>;
+      <span class="t">color:</span> <span class="s">#fff</span>;
+      <span class="t">border:</span> <span class="s">1px solid #0066cc</span>;
+    }
+    <span class="v">.lamborghini-theme</span> {
+      <span class="t">background:</span> <span class="s">#4a3c00</span>;
+      <span class="t">color:</span> <span class="s">#f5c518</span>;
+      <span class="t">border:</span> <span class="s">1px solid #c9a800</span>;
+    }
+  <span class="k">&lt;/style&gt;</span>
+<span class="k">&lt;/head&gt;</span></pre>
+    </div>
+
+    <div class="output-label">Live Output — Brand Theme Cards</div>
+    <div class="output-box">
+      <div class="car-theme-demo">
+        <div class="theme-card ferrari-theme">
+          <h4>Ferrari</h4>
+          <p>Rosso Corsa · Maranello</p>
+        </div>
+        <div class="theme-card bmw-theme">
+          <h4>BMW M</h4>
+          <p>Bavarian Blue · Munich</p>
+        </div>
+        <div class="theme-card lamborghini-theme">
+          <h4>Lamborghini</h4>
+          <p>Giallo Orion · Sant'Agata</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="css-demo-box" style="background: rgba(86,211,100,0.05); border: 1px solid rgba(86,211,100,0.15);">
+      <span>Advantage: Styles reused across the page</span>
+      <span class="css-type-label internal-label">Internal</span>
+    </div>
+  </div>
+
+  <!-- 3. EXTERNAL CSS -->
+  <div class="card fade-up">
+    <div class="card-label">03 — External CSS</div>
+    <p style="margin-bottom:14px; color:var(--muted);">External CSS lives in a separate <code style="background:var(--surface); padding:2px 6px; border-radius:4px; font-family:'Share Tech Mono',monospace; color:var(--accent);">.css</code> file and is linked to the HTML. Used across all pages of this project.</p>
+
+    <div class="code-box">
+      <div class="code-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="filename">index.html — linking external file</span></div>
+      <pre><span class="k">&lt;head&gt;</span>
+  <span class="c">&lt;!-- EXTERNAL CSS: link to shared stylesheet --&gt;</span>
+  <span class="k">&lt;link</span> <span class="t">rel</span>=<span class="s">"stylesheet"</span> <span class="t">href</span>=<span class="s">"style.css"</span><span class="k">&gt;</span>
+<span class="k">&lt;/head&gt;</span></pre>
+    </div>
+
+    <div class="code-box">
+      <div class="code-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="filename">style.css — external file contents (excerpt)</span></div>
+      <pre><span class="c">/* External CSS: applies to every page in the project */</span>
+<span class="v">.navbar</span> {
+  <span class="t">position:</span> <span class="s">sticky</span>;
+  <span class="t">top:</span> <span class="s">0</span>;
+  <span class="t">background:</span> <span class="s">rgba(10,10,10,0.95)</span>;
+  <span class="t">border-bottom:</span> <span class="s">1px solid #2a2a2a</span>;
+}
+
+<span class="v">.btn</span> {
+  <span class="t">font-family:</span> <span class="s">'Share Tech Mono', monospace</span>;
+  <span class="t">padding:</span> <span class="s">10px 24px</span>;
+  <span class="t">border:</span> <span class="s">1px solid #e63946</span>;
+  <span class="t">transition:</span> <span class="s">all 0.2s</span>;
+}</pre>
+    </div>
+
+    <div class="output-label">Live Output — External CSS Buttons</div>
+    <div class="output-box" style="display:flex; gap:12px; flex-wrap:wrap;">
+      <a href="index.html" class="btn">← Home</a>
+      <a href="tables.html" class="btn btn-filled">Spec Table →</a>
+    </div>
+
+    <div class="css-demo-box" style="background: rgba(88,166,255,0.05); border: 1px solid rgba(88,166,255,0.15);">
+      <span>Advantage: One file styles all pages — best practice</span>
+      <span class="css-type-label external-label">External</span>
+    </div>
+  </div>
+
+  <!-- SUMMARY TABLE -->
+  <div class="card fade-up">
+    <div class="card-label">Summary — All Three CSS Types</div>
+    <table class="styled-table">
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Where Written</th>
+          <th>Scope</th>
+          <th>Best Used For</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="css-type-label inline-label">Inline</span></td>
+          <td>Inside HTML element</td>
+          <td>Single element</td>
+          <td>Quick one-off styles</td>
+        </tr>
+        <tr>
+          <td><span class="css-type-label internal-label">Internal</span></td>
+          <td>&lt;style&gt; in &lt;head&gt;</td>
+          <td>Whole page</td>
+          <td>Page-specific styles</td>
+        </tr>
+        <tr>
+          <td><span class="css-type-label external-label">External</span></td>
+          <td>Separate .css file</td>
+          <td>All pages</td>
+          <td>Shared styles (best practice)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div style="display:flex; gap:12px; flex-wrap:wrap;">
+    <a href="index.html" class="btn">← Home</a>
+    <a href="xml.html" class="btn btn-filled">Next: XML →</a>
+  </div>
+
+</div>
+
+<footer>
+  <p>World's Greatest Cars &nbsp;·&nbsp; CSS Concepts Page</p>
+</footer>
+
+</body>
+</html>

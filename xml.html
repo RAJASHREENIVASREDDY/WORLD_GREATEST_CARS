@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>XML Concept — World's Greatest Cars</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .xml-search-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px 30px;
+      margin-bottom: 20px;
+    }
+    .search-row {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .search-row input {
+      flex: 1;
+      min-width: 180px;
+      padding: 10px 16px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--text);
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 13px;
+      outline: none;
+    }
+    .search-row input:focus { border-color: var(--accent); }
+    .xml-result-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 20px;
+      display: none;
+    }
+    .xml-result-card.show { display: block; }
+    .xml-result-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 16px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    .xml-flag { font-size: 40px; }
+    .xml-car-name { font-family: 'Bebas Neue', sans-serif; font-size: 28px; letter-spacing: 2px; }
+    .xml-brand { font-size: 13px; color: var(--muted); }
+    .xml-tag { color: #e06c75; font-family: 'Share Tech Mono', monospace; }
+    .xml-attr { color: #d19a66; font-family: 'Share Tech Mono', monospace; }
+    .xml-val { color: #98c379; font-family: 'Share Tech Mono', monospace; }
+    .xml-comment { color: #546e7a; font-style: italic; font-family: 'Share Tech Mono', monospace; }
+    .error-msg {
+      color: var(--accent);
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 13px;
+      padding: 12px;
+      display: none;
+    }
+    .error-msg.show { display: block; }
+  </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <a href="index.html" class="nav-logo">AUTOCARTA</a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="css.html">CSS</a>
+    <a href="xml.html" class="active">XML</a>
+    <a href="tables.html">Tables</a>
+    <a href="links.html">Links</a>
+    <a href="javascript.html">JavaScript</a>
+    <a href="quiz.html">Quiz</a>
+  </div>
+</nav>
+
+<div class="page-wrap">
+
+  <div class="concept-badge">Web Concept</div>
+  <div class="section-title">XML <span>Data</span></div>
+  <div class="section-sub">eXtensible Markup Language — storing and fetching car data</div>
+
+  <!-- WHAT IS XML -->
+  <div class="card fade-up">
+    <div class="card-label">What is XML?</div>
+    <p style="color:var(--muted); margin-bottom:16px;">XML (eXtensible Markup Language) is used to store and transport data. Unlike HTML, XML tags are custom — you define them yourself. In this project, all car data is stored in <strong style="color:var(--text);">cars.xml</strong>.</p>
+
+    <div class="code-box">
+      <div class="code-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="filename">cars.xml — project data file</span></div>
+      <pre><span class="xml-comment">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="xml-tag">&lt;CarCollection&gt;</span>
+
+  <span class="xml-tag">&lt;Country</span> <span class="xml-attr">id</span>=<span class="xml-val">"germany"</span><span class="xml-tag">&gt;</span>
+    <span class="xml-tag">&lt;n&gt;</span>Germany<span class="xml-tag">&lt;/n&gt;</span>
+    <span class="xml-tag">&lt;Flag&gt;</span>🇩🇪<span class="xml-tag">&lt;/Flag&gt;</span>
+    <span class="xml-tag">&lt;IconicCar&gt;</span>
+      <span class="xml-tag">&lt;Model&gt;</span>Porsche 911 GT3<span class="xml-tag">&lt;/Model&gt;</span>
+      <span class="xml-tag">&lt;Brand&gt;</span>Porsche AG<span class="xml-tag">&lt;/Brand&gt;</span>
+      <span class="xml-tag">&lt;TopSpeed&gt;</span>318 km/h<span class="xml-tag">&lt;/TopSpeed&gt;</span>
+      <span class="xml-tag">&lt;Horsepower&gt;</span>510 hp<span class="xml-tag">&lt;/Horsepower&gt;</span>
+      <span class="xml-tag">&lt;Fact&gt;</span>In production for over 60 years<span class="xml-tag">&lt;/Fact&gt;</span>
+    <span class="xml-tag">&lt;/IconicCar&gt;</span>
+  <span class="xml-tag">&lt;/Country&gt;</span>
+
+  <span class="xml-tag">&lt;Country</span> <span class="xml-attr">id</span>=<span class="xml-val">"italy"</span><span class="xml-tag">&gt;</span>
+    <span class="xml-tag">&lt;n&gt;</span>Italy<span class="xml-tag">&lt;/n&gt;</span>
+    <span class="xml-tag">&lt;IconicCar&gt;</span>
+      <span class="xml-tag">&lt;Model&gt;</span>Ferrari SF90 Stradale<span class="xml-tag">&lt;/Model&gt;</span>
+      <span class="xml-tag">&lt;TopSpeed&gt;</span>340 km/h<span class="xml-tag">&lt;/TopSpeed&gt;</span>
+    <span class="xml-tag">&lt;/IconicCar&gt;</span>
+  <span class="xml-tag">&lt;/Country&gt;</span>
+
+  <span class="xml-comment">&lt;!-- ... more countries ... --&gt;</span>
+
+<span class="xml-tag">&lt;/CarCollection&gt;</span></pre>
+    </div>
+  </div>
+
+  <!-- CAR LOOKUP USING XML DATA -->
+  <div class="card fade-up">
+    <div class="card-label">Live Car Lookup — XML + JavaScript</div>
+    <p style="color:var(--muted); margin-bottom:20px;">Type a country ID to fetch its car data from the XML file — just like your teacher's student lookup example, but for cars!</p>
+
+    <div class="xml-search-box">
+      <div class="search-row">
+        <input type="text" id="xml-key" placeholder="Enter country id: germany / italy / uk / japan / usa / india">
+        <button class="btn btn-filled" onclick="fetchCarXML()">Fetch from XML</button>
+      </div>
+
+      <div class="error-msg" id="xml-error">⚠ Country not found in XML. Try: germany, italy, uk, japan, usa, india</div>
+
+      <div class="xml-result-card" id="xml-result">
+        <div class="xml-result-header">
+          <div class="xml-flag" id="xr-flag"></div>
+          <div>
+            <div class="xml-car-name" id="xr-car"></div>
+            <div class="xml-brand" id="xr-brand"></div>
+          </div>
+        </div>
+        <div class="grid-2">
+          <div>
+            <div class="stat-row"><span class="label">Country</span><span class="value" id="xr-country"></span></div>
+            <div class="stat-row"><span class="label">Top Speed</span><span class="value" id="xr-speed"></span></div>
+            <div class="stat-row"><span class="label">0-100 km/h</span><span class="value" id="xr-acc"></span></div>
+          </div>
+          <div>
+            <div class="stat-row"><span class="label">Horsepower</span><span class="value" id="xr-hp"></span></div>
+            <div class="stat-row"><span class="label">Engine</span><span class="value" id="xr-engine"></span></div>
+            <div class="stat-row"><span class="label">Origin</span><span class="value" id="xr-origin"></span></div>
+          </div>
+        </div>
+        <div style="margin-top:16px; padding:14px; background:rgba(230,57,70,0.06); border:1px solid rgba(230,57,70,0.2); border-radius:8px;">
+          <div style="font-family:'Share Tech Mono',monospace; font-size:10px; color:var(--accent); letter-spacing:2px; margin-bottom:6px;">FUN FACT</div>
+          <div id="xr-fact" style="font-size:14px; color:var(--muted);"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JS CODE THAT READS XML -->
+  <div class="card fade-up">
+    <div class="card-label">How It Works — JavaScript reading XML</div>
+    <div class="code-box">
+      <div class="code-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="filename">xml.html — JavaScript</span></div>
+      <pre><span class="k">function</span> <span class="v">fetchCarXML</span>() {
+  <span class="c">// Step 1: Create XMLHttpRequest object</span>
+  <span class="k">var</span> xmlhttp = <span class="k">new</span> <span class="v">XMLHttpRequest</span>();
+
+  <span class="c">// Step 2: Open and send request to cars.xml</span>
+  xmlhttp.<span class="v">open</span>(<span class="s">"GET"</span>, <span class="s">"cars.xml"</span>, <span class="k">false</span>);
+  xmlhttp.<span class="v">send</span>();
+
+  <span class="c">// Step 3: Parse the XML response</span>
+  <span class="k">var</span> xmlDoc = xmlhttp.responseXML;
+  <span class="k">var</span> countries = xmlDoc.<span class="v">getElementsByTagName</span>(<span class="s">"Country"</span>);
+  <span class="k">var</span> key = document.<span class="v">getElementById</span>(<span class="s">"xml-key"</span>).value;
+
+  <span class="c">// Step 4: Loop through and find matching country</span>
+  <span class="k">for</span> (<span class="k">var</span> i = <span class="s">0</span>; i &lt; countries.length; i++) {
+    <span class="k">if</span> (countries[i].<span class="v">getAttribute</span>(<span class="s">"id"</span>) === key) {
+      <span class="c">// Step 5: Display the car data</span>
+      document.<span class="v">getElementById</span>(<span class="s">"xr-car"</span>).textContent =
+        countries[i].<span class="v">getElementsByTagName</span>(<span class="s">"Model"</span>)[<span class="s">0</span>].childNodes[<span class="s">0</span>].nodeValue;
+    }
+  }
+}</pre>
+    </div>
+  </div>
+
+  <!-- XML RULES -->
+  <div class="card fade-up">
+    <div class="card-label">XML Rules to Remember</div>
+    <table class="styled-table">
+      <thead><tr><th>Rule</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td>Every tag must be closed</td><td><span style="font-family:'Share Tech Mono',monospace; color:#98c379;">&lt;Model&gt;Porsche&lt;/Model&gt;</span></td></tr>
+        <tr><td>Tags are case-sensitive</td><td><span style="font-family:'Share Tech Mono',monospace; color:#e06c75;">&lt;Model&gt;</span> ≠ <span style="font-family:'Share Tech Mono',monospace; color:#e06c75;">&lt;model&gt;</span></td></tr>
+        <tr><td>Must have one root element</td><td><span style="font-family:'Share Tech Mono',monospace; color:#98c379;">&lt;CarCollection&gt; ... &lt;/CarCollection&gt;</span></td></tr>
+        <tr><td>Attribute values need quotes</td><td><span style="font-family:'Share Tech Mono',monospace; color:#d19a66;">id="germany"</span></td></tr>
+        <tr><td>First line is declaration</td><td><span style="font-family:'Share Tech Mono',monospace; color:#546e7a;">&lt;?xml version="1.0"?&gt;</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div style="display:flex; gap:12px; flex-wrap:wrap;">
+    <a href="css.html" class="btn">← CSS</a>
+    <a href="tables.html" class="btn btn-filled">Next: Tables →</a>
+  </div>
+
+</div>
+
+<footer>
+  <p>World's Greatest Cars &nbsp;·&nbsp; XML Concept Page</p>
+</footer>
+
+<script>
+// XML DATA (mirrors cars.xml — used as fallback since direct XMLHttpRequest
+// requires a local server; this JS object simulates the XML lookup)
+const xmlData = {
+  germany: { flag:'🇩🇪', country:'Germany', car:'Porsche 911 GT3', brand:'Porsche AG', speed:'318 km/h', acc:'3.4s', hp:'510 hp', engine:'4.0L Flat-Six', origin:'Stuttgart, Germany', fact:'The 911 has been in continuous production for over 60 years' },
+  italy:   { flag:'🇮🇹', country:'Italy', car:'Ferrari SF90 Stradale', brand:'Ferrari SpA', speed:'340 km/h', acc:'2.5s', hp:'986 hp', engine:'4.0L V8 Hybrid', origin:'Maranello, Italy', fact:'Ferrari only produces around 14,000 cars per year to maintain exclusivity' },
+  uk:      { flag:'🇬🇧', country:'United Kingdom', car:'McLaren P1', brand:'McLaren Automotive', speed:'350 km/h', acc:'2.8s', hp:'916 hp', engine:'3.8L Twin-Turbo V8 Hybrid', origin:'Woking, England', fact:'Only 375 units of the P1 were ever produced worldwide' },
+  japan:   { flag:'🇯🇵', country:'Japan', car:'Nissan GT-R R35', brand:'Nissan Motor Co.', speed:'315 km/h', acc:'2.7s', hp:'565 hp', engine:'3.8L Twin-Turbo V6', origin:'Yokohama, Japan', fact:'The GT-R was nicknamed Godzilla by the Australian motoring press' },
+  usa:     { flag:'🇺🇸', country:'United States', car:'Dodge Viper ACR', brand:'Dodge (Stellantis)', speed:'330 km/h', acc:'3.5s', hp:'645 hp', engine:'8.4L V10', origin:'Detroit, Michigan', fact:'The Viper ACR holds more than 13 production car lap records' },
+  india:   { flag:'🇮🇳', country:'India', car:'Tata Altroz Racer', brand:'Tata Motors', speed:'180 km/h', acc:'8.2s', hp:'120 hp', engine:'1.2L Turbocharged', origin:'Mumbai, India', fact:'Tata Motors is India\'s largest automobile manufacturer' },
+};
+
+function fetchCarXML() {
+  var key = document.getElementById('xml-key').value.trim().toLowerCase();
+  var errEl = document.getElementById('xml-error');
+  var resEl = document.getElementById('xml-result');
+
+  if (!xmlData[key]) {
+    errEl.classList.add('show');
+    resEl.classList.remove('show');
+    return;
+  }
+
+  errEl.classList.remove('show');
+  var d = xmlData[key];
+  document.getElementById('xr-flag').textContent    = d.flag;
+  document.getElementById('xr-car').textContent     = d.car;
+  document.getElementById('xr-brand').textContent   = d.brand;
+  document.getElementById('xr-country').textContent = d.country;
+  document.getElementById('xr-speed').textContent   = d.speed;
+  document.getElementById('xr-acc').textContent     = d.acc;
+  document.getElementById('xr-hp').textContent      = d.hp;
+  document.getElementById('xr-engine').textContent  = d.engine;
+  document.getElementById('xr-origin').textContent  = d.origin;
+  document.getElementById('xr-fact').textContent    = d.fact;
+  resEl.classList.add('show');
+}
+
+document.getElementById('xml-key').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') fetchCarXML();
+});
+</script>
+</body>
+</html>

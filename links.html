@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Links — World's Greatest Cars</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .link-type-section { margin-bottom: 36px; }
+    .link-demo-area {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 20px 22px;
+      margin: 14px 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+    a.demo-link {
+      color: var(--accent);
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 13px;
+      text-decoration: underline;
+      transition: color 0.2s;
+    }
+    a.demo-link:hover { color: #f4a261; }
+    a.demo-link-ext { color: #58a6ff; font-family: 'Share Tech Mono', monospace; font-size: 13px; text-decoration: underline; }
+    a.demo-link-ext:hover { color: #9ecaff; }
+    .anchor-section { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px 30px; margin-bottom: 20px; }
+    .anchor-section h3 { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 2px; margin-bottom: 8px; color: var(--text); }
+    .back-to-top { display: inline-block; margin-top: 16px; font-family: 'Share Tech Mono', monospace; font-size: 12px; color: var(--muted); text-decoration: none; letter-spacing: 1px; }
+    .back-to-top:hover { color: var(--accent); }
+  </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <a href="index.html" class="nav-logo">AUTOCARTA</a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="css.html">CSS</a>
+    <a href="xml.html">XML</a>
+    <a href="tables.html">Tables</a>
+    <a href="links.html" class="active">Links</a>
+    <a href="javascript.html">JavaScript</a>
+    <a href="quiz.html">Quiz</a>
+  </div>
+</nav>
+
+<div class="page-wrap">
+
+  <!-- ANCHOR for "back to top" demo -->
+  <div id="top"></div>
+
+  <div class="concept-badge">Web Concept</div>
+  <div class="section-title">HTML <span>Links</span></div>
+  <div class="section-sub">Anchor tags — internal, external, email, anchor & country navigation</div>
+
+  <!-- LINK TYPE 1: Internal -->
+  <div class="card fade-up">
+    <div class="card-label">Type 1 — Internal Page Links</div>
+    <p style="color:var(--muted); margin-bottom:14px;">Links that navigate between pages <strong style="color:var(--text);">within this website</strong>. Used in our navbar and all navigation buttons.</p>
+    <div class="code-box">
+      <div class="code-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="filename">Internal Links</span></div>
+      <pre><span class="c">&lt;!-- Navigate to another page in same project --&gt;</span>
+<span class="k">&lt;a</span> <span class="t">href</span>=<span class="s">"germany.html"</span><span class="k">&gt;</span>Germany 🇩🇪<span class="k">&lt;/a&gt;</span>
+<span class="k">&lt;a</span> <span class="t">href</span>=<span class="s">"index.html"</span><span class="k">&gt;</span>Home<span class="k">&lt;/a&gt;</span>
+<span class="k">&lt;a</span> <span class="t">href</span>=<span class="s">"quiz.html"</span><span class="k">&gt;</span>Take the Quiz<span class="k">&lt;/a&gt;</span></pre>
+    </div>
+    <div class="output-label">Live Output</div>
+    <div class="link-demo-area">
+      <a href="index.html" class="demo-link">🏠 Home</a>
+      <a href="germany.html" class="demo-link">🇩🇪 Germany</a>
+      <a href="italy.html" class="demo-link">🇮🇹 Italy</a>
+      <a href="quiz.html" class="demo-link">🏁 Quiz</a>
+      <a href="tables.html" class="demo-link">📊 Spec Table</a>
+    </div>
+  </div>
+
+  <!-- LINK TYPE 2: External -->
+  <div class="card fade-up">
+    <div class="card-label">Type 2 — External Links (open in new tab)</div>
+    <p style="color:var(--muted); margin-bottom:14px;">Links to websites <strong style="color:var(--text);">outside</strong> this project. <code style="font-family:'Share Tech Mono',monospace; color:var(--accent);">target="_blank"</code> opens in a new tab.</p>
+    <div class="code-box">
+      <div class="code-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="filename">External Links</span></div>
+      <pre><span class="c">&lt;!-- target="_blank" opens in new tab --&gt;</span>
+<span class="k">&lt;a</span> <span class="t">href</span>=<span class="s">"https://www.porsche.com"</span> <span class="t">target</span>=<span class="s">"_blank"</span><span class="k">&gt;</span>
+  Porsche Official Site
+<span class="k">&lt;/a&gt;</span>
+
+<span class="k">&lt;a</span> <span class="t">href</span>=<span class="s">"https://www.ferrari.com"</span> <span class="t">target</span>=<span class="s">"_blank"</span><span class="k">&gt;</span>
+  Ferrari Official Site
+<span class="k">&lt;/a&gt;</span></pre>
+    </div>
+    <div class="output-label">Live Output</div>
+    <div class="link-demo-area">
+      <a href="https://www.porsche.com" target="_blank" class="demo-link-ext">🚗 Porsche Official ↗</a>
+      <a href="https://www.ferrari.com" target="_blank" class="demo-link-ext">🏎️ Ferrari Official ↗</a>
+      <a href="https://www.nissan-global.com" target="_blank" class="demo-link-ext">👹 Nissan Official ↗</a>
+      <a href="https://www.mclaren.com" target="_blank" class="demo-link-ext">🕷️ McLaren Official ↗</a>
+    </div>
+  </div>
+
+  <!-- LINK TYPE 3: Email -->
+  <div class="card fade-up">
+    <div class="card-label">Type 3 — Email Links</div>
+    <p style="color:var(--muted); margin-bottom:14px;"><code style="font-family:'Share Tech Mono',monospace; color:var(--accent);">mailto:</code> opens the user's email client with the address pre-filled.</p>
+    <div class="code-box">
+      <div class="code-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="filename">Email Link</span></div>
+      <pre><span class="c">&lt;!-- Opens mail client with address filled in --&gt;</span>
+<span class="k">&lt;a</span> <span class="t">href</span>=<span class="s">"mailto:contact@autocarta.com"</span><span class="k">&gt;</span>
+  Contact Us
+<span class="k">&lt;/a&gt;</span>
+
+<span class="c">&lt;!-- With subject pre-filled --&gt;</span>
+<span class="k">&lt;a</span> <span class="t">href</span>=<span class="s">"mailto:contact@autocarta.com?subject=Car Enquiry"</span><span class="k">&gt;</span>
+  Send Car Enquiry
+<span class="k">&lt;/a&gt;</span></pre>
+    </div>
+    <div class="output-label">Live Output</div>
+    <div class="link-demo-area">
+      <a href="mailto:contact@autocarta.com" class="demo-link">✉️ contact@autocarta.com</a>
+      <a href="mailto:contact@autocarta.com?subject=Car Enquiry" class="demo-link">📧 Send Car Enquiry</a>
+    </div>
+  </div>
+
+  <!-- LINK TYPE 4: Anchor / Jump -->
+  <div class="card fade-up">
+    <div class="card-label">Type 4 — Anchor Links (Jump to section)</div>
+    <p style="color:var(--muted); margin-bottom:14px;">Links to a specific section on the <strong style="color:var(--text);">same page</strong> using an <code style="font-family:'Share Tech Mono',monospace; color:var(--accent);">id</code>.</p>
+    <div class="code-box">
+      <div class="code-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="filename">Anchor Links</span></div>
+      <pre><span class="c">&lt;!-- The destination anchor --&gt;</span>
+<span class="k">&lt;div</span> <span class="t">id</span>=<span class="s">"germany-section"</span><span class="k">&gt;</span>...<span class="k">&lt;/div&gt;</span>
+
+<span class="c">&lt;!-- The link that jumps to it --&gt;</span>
+<span class="k">&lt;a</span> <span class="t">href</span>=<span class="s">"#germany-section"</span><span class="k">&gt;</span>Jump to Germany<span class="k">&lt;/a&gt;</span>
+
+<span class="c">&lt;!-- Back to top --&gt;</span>
+<span class="k">&lt;a</span> <span class="t">href</span>=<span class="s">"#top"</span><span class="k">&gt;</span>↑ Back to Top<span class="k">&lt;/a&gt;</span></pre>
+    </div>
+    <div class="output-label">Live Output</div>
+    <div class="link-demo-area">
+      <a href="#germany-section" class="demo-link">Jump to Germany ↓</a>
+      <a href="#italy-section" class="demo-link">Jump to Italy ↓</a>
+      <a href="#top" class="demo-link">↑ Back to Top</a>
+    </div>
+  </div>
+
+  <!-- COUNTRY NAVIGATION — main links feature -->
+  <div class="map-label" style="margin: 40px 0 20px;">Country Pages — Internal Navigation</div>
+  <div class="grid-3">
+    <a href="germany.html" class="country-card">
+      <span class="flag">🇩🇪</span>
+      <h3>Germany</h3>
+      <p>Engineering perfection</p>
+      <div class="car-name">Porsche 911 GT3</div>
+    </a>
+    <a href="italy.html" class="country-card">
+      <span class="flag">🇮🇹</span>
+      <h3>Italy</h3>
+      <p>Passion on wheels</p>
+      <div class="car-name">Ferrari SF90 Stradale</div>
+    </a>
+    <a href="uk.html" class="country-card">
+      <span class="flag">🇬🇧</span>
+      <h3>United Kingdom</h3>
+      <p>British precision</p>
+      <div class="car-name">McLaren P1</div>
+    </a>
+    <a href="japan.html" class="country-card">
+      <span class="flag">🇯🇵</span>
+      <h3>Japan</h3>
+      <p>Technology & speed</p>
+      <div class="car-name">Nissan GT-R R35</div>
+    </a>
+    <a href="usa.html" class="country-card">
+      <span class="flag">🇺🇸</span>
+      <h3>USA</h3>
+      <p>Raw American muscle</p>
+      <div class="car-name">Dodge Viper ACR</div>
+    </a>
+    <a href="india.html" class="country-card">
+      <span class="flag">🇮🇳</span>
+      <h3>India</h3>
+      <p>Rising automotive power</p>
+      <div class="car-name">Tata Altroz Racer</div>
+    </a>
+  </div>
+
+  <!-- ANCHOR SECTIONS (for the jump demo) -->
+  <div id="germany-section" class="anchor-section" style="margin-top:40px;">
+    <h3>🇩🇪 Germany</h3>
+    <p style="color:var(--muted); font-size:14px;">Home of Porsche, BMW, and Mercedes. German engineering is known for precision, performance, and reliability. The Autobahn's no-speed-limit zones pushed German engineers to build cars that perform at extreme velocities.</p>
+    <a href="#top" class="back-to-top">↑ Back to top</a>
+  </div>
+
+  <div id="italy-section" class="anchor-section">
+    <h3>🇮🇹 Italy</h3>
+    <p style="color:var(--muted); font-size:14px;">Ferrari, Lamborghini, Alfa Romeo — Italy builds cars with soul. Italian cars are art in motion, combining stunning design with raw performance. Ferrari's Maranello factory is considered the holy land of supercars.</p>
+    <a href="#top" class="back-to-top">↑ Back to top</a>
+  </div>
+
+  <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:30px;">
+    <a href="tables.html" class="btn">← Tables</a>
+    <a href="javascript.html" class="btn btn-filled">Next: JavaScript →</a>
+  </div>
+
+</div>
+
+<footer>
+  <p>World's Greatest Cars &nbsp;·&nbsp; Links Concept Page</p>
+</footer>
+
+</body>
+</html>

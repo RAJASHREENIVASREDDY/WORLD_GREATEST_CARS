@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript — World's Greatest Cars</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .js-demo { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px 30px; margin-bottom: 24px; }
+    .result-box { background: var(--surface); border-radius: 8px; padding: 16px 18px; margin-top: 16px; font-size: 14px; min-height: 54px; border: 1px solid var(--border); display: none; }
+    .result-box.show { display: block; }
+    .result-box.ok { border-color: rgba(86,211,100,0.3); background: rgba(86,211,100,0.05); }
+    .result-box.err { border-color: rgba(230,57,70,0.3); background: rgba(230,57,70,0.05); }
+    .result-label { font-family: 'Share Tech Mono', monospace; font-size: 10px; letter-spacing: 2px; margin-bottom: 6px; text-transform: uppercase; }
+    .result-label.ok { color: #56d364; }
+    .result-label.err { color: var(--accent); }
+    .calculator { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .calc-result { grid-column: 1 / -1; }
+    .speed-display {
+      text-align: center;
+      padding: 24px;
+      background: var(--surface);
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+    .speed-num { font-family: 'Bebas Neue', sans-serif; font-size: 64px; letter-spacing: 4px; color: var(--accent); line-height: 1; }
+    .speed-unit { font-family: 'Share Tech Mono', monospace; font-size: 12px; color: var(--muted); letter-spacing: 3px; margin-top: 4px; }
+    .slider-row { display: flex; align-items: center; gap: 14px; margin: 16px 0; }
+    .slider-row input[type=range] { flex: 1; accent-color: var(--accent); }
+    .slider-label { font-family: 'Share Tech Mono', monospace; font-size: 12px; color: var(--muted); min-width: 100px; }
+    .counter-display { font-family: 'Bebas Neue', sans-serif; font-size: 48px; color: var(--text); text-align: center; padding: 20px; }
+    .counter-btns { display: flex; gap: 10px; justify-content: center; }
+  </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <a href="index.html" class="nav-logo">AUTOCARTA</a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="css.html">CSS</a>
+    <a href="xml.html">XML</a>
+    <a href="tables.html">Tables</a>
+    <a href="links.html">Links</a>
+    <a href="javascript.html" class="active">JavaScript</a>
+    <a href="quiz.html">Quiz</a>
+  </div>
+</nav>
+
+<div class="page-wrap">
+
+  <div class="concept-badge">Web Concept</div>
+  <div class="section-title">Java<span>Script</span></div>
+  <div class="section-sub">Form validation, DOM manipulation, events, and live interactivity</div>
+
+  <!-- JS DEMO 1: Form Validation -->
+  <div class="js-demo fade-up">
+    <div class="card-label">01 — Form Validation</div>
+    <p style="color:var(--muted); margin-bottom:20px;">JavaScript validates user input before processing — name, email, and car selection all checked in real time.</p>
+
+    <div class="code-box">
+      <div class="code-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="filename">Form Validation — JavaScript</span></div>
+      <pre><span class="k">function</span> <span class="v">validateForm</span>() {
+  <span class="k">var</span> name  = document.<span class="v">getElementById</span>(<span class="s">"name"</span>).value;
+  <span class="k">var</span> email = document.<span class="v">getElementById</span>(<span class="s">"email"</span>).value;
+  <span class="k">var</span> car   = document.<span class="v">getElementById</span>(<span class="s">"favCar"</span>).value;
+
+  <span class="c">// Check if name is empty</span>
+  <span class="k">if</span> (name === <span class="s">""</span>) {
+    <span class="v">alert</span>(<span class="s">"Please enter your name!"</span>);
+    <span class="k">return false</span>;
+  }
+
+  <span class="c">// Check email format using regex</span>
+  <span class="k">if</span> (!email.<span class="v">includes</span>(<span class="s">"@"</span>)) {
+    <span class="v">alert</span>(<span class="s">"Please enter a valid email!"</span>);
+    <span class="k">return false</span>;
+  }
+
+  <span class="v">alert</span>(<span class="s">"Welcome, "</span> + name + <span class="s">"! You love "</span> + car);
+  <span class="k">return true</span>;
+}</pre>
+    </div>
+
+    <div style="margin-top:20px;">
+      <div class="form-group">
+        <label>Your Name</label>
+        <input type="text" id="f-name" placeholder="e.g. Rahul Kumar">
+      </div>
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="text" id="f-email" placeholder="e.g. rahul@email.com">
+      </div>
+      <div class="form-group">
+        <label>Favourite Car</label>
+        <select id="f-car" style="width:100%; padding:10px 14px; background:var(--surface); border:1px solid var(--border); border-radius:6px; color:var(--text); font-family:'Barlow',sans-serif; font-size:14px; outline:none;">
+          <option value="">-- Select a car --</option>
+          <option value="Porsche 911 GT3">🇩🇪 Porsche 911 GT3</option>
+          <option value="Ferrari SF90">🇮🇹 Ferrari SF90 Stradale</option>
+          <option value="McLaren P1">🇬🇧 McLaren P1</option>
+          <option value="Nissan GT-R">🇯🇵 Nissan GT-R R35</option>
+          <option value="Dodge Viper">🇺🇸 Dodge Viper ACR</option>
+          <option value="Tata Altroz">🇮🇳 Tata Altroz Racer</option>
+        </select>
+      </div>
+      <button class="btn btn-filled" onclick="validateForm()">Submit & Validate</button>
+      <div class="result-box" id="form-result">
+        <div class="result-label" id="form-rlabel"></div>
+        <div id="form-rmsg"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JS DEMO 2: Speed Converter -->
+  <div class="js-demo fade-up">
+    <div class="card-label">02 — Live Speed Converter (DOM Manipulation)</div>
+    <p style="color:var(--muted); margin-bottom:20px;">Drag the slider — JavaScript updates the display in real time using <code style="font-family:'Share Tech Mono',monospace; color:var(--accent);">oninput</code> event.</p>
+
+    <div class="speed-display">
+      <div class="speed-num" id="speed-kmh">0</div>
+      <div class="speed-unit">KM/H</div>
+      <div style="margin-top:12px; font-size:14px; color:var(--muted);">= <span id="speed-mph" style="color:var(--accent2); font-weight:600;">0</span> mph &nbsp;|&nbsp; <span id="speed-ms" style="color:#56d364; font-weight:600;">0</span> m/s</div>
+    </div>
+    <div class="slider-row" style="margin-top:16px;">
+      <span class="slider-label">0 km/h</span>
+      <input type="range" min="0" max="440" value="0" id="speed-slider" oninput="updateSpeed(this.value)">
+      <span class="slider-label" style="text-align:right;">440 km/h (Bugatti)</span>
+    </div>
+    <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:12px;">
+      <button class="btn" onclick="setSpeed(180)">🇮🇳 Tata (180)</button>
+      <button class="btn" onclick="setSpeed(315)">🇯🇵 GTR (315)</button>
+      <button class="btn" onclick="setSpeed(340)">🇮🇹 Ferrari (340)</button>
+      <button class="btn" onclick="setSpeed(440)">🏆 Bugatti (440)</button>
+    </div>
+  </div>
+
+  <!-- JS DEMO 3: Favourites Counter -->
+  <div class="js-demo fade-up">
+    <div class="card-label">03 — Favourites Counter (Variables + Events)</div>
+    <p style="color:var(--muted); margin-bottom:20px;">Click to add or remove from your favourites — JavaScript tracks count with a variable.</p>
+
+    <div class="code-box">
+      <div class="code-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="filename">Counter using JS variables</span></div>
+      <pre><span class="k">var</span> count = <span class="s">0</span>;  <span class="c">// Variable to track favourites</span>
+
+<span class="k">function</span> <span class="v">addFavourite</span>() {
+  count++;  <span class="c">// Increment</span>
+  document.<span class="v">getElementById</span>(<span class="s">"count"</span>).textContent = count;
+}
+
+<span class="k">function</span> <span class="v">removeFavourite</span>() {
+  <span class="k">if</span> (count > <span class="s">0</span>) count--;  <span class="c">// Don't go below 0</span>
+  document.<span class="v">getElementById</span>(<span class="s">"count"</span>).textContent = count;
+}</pre>
+    </div>
+
+    <div class="counter-display" id="fav-count">0</div>
+    <div style="text-align:center; font-family:'Share Tech Mono',monospace; font-size:11px; color:var(--muted); margin-bottom:14px; letter-spacing:2px;">CARS IN FAVOURITES</div>
+    <div class="counter-btns">
+      <button class="btn btn-filled" onclick="addFav()">+ Add Car</button>
+      <button class="btn" onclick="removeFav()">− Remove</button>
+      <button class="btn" onclick="resetFav()">Reset</button>
+    </div>
+  </div>
+
+  <!-- JS DEMO 4: Dynamic Car Card -->
+  <div class="js-demo fade-up">
+    <div class="card-label">04 — Dynamic Content (innerHTML)</div>
+    <p style="color:var(--muted); margin-bottom:20px;">Click a country to dynamically render a car card using <code style="font-family:'Share Tech Mono',monospace; color:var(--accent);">innerHTML</code>.</p>
+    <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:16px;">
+      <button class="btn" onclick="showCarCard('germany')">🇩🇪 Germany</button>
+      <button class="btn" onclick="showCarCard('italy')">🇮🇹 Italy</button>
+      <button class="btn" onclick="showCarCard('uk')">🇬🇧 UK</button>
+      <button class="btn" onclick="showCarCard('japan')">🇯🇵 Japan</button>
+      <button class="btn" onclick="showCarCard('usa')">🇺🇸 USA</button>
+      <button class="btn" onclick="showCarCard('india')">🇮🇳 India</button>
+    </div>
+    <div id="car-card-result" style="background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:20px; min-height:60px; font-size:14px; color:var(--muted);">
+      Click a country button above to dynamically load its car...
+    </div>
+  </div>
+
+  <div style="display:flex; gap:12px; flex-wrap:wrap;">
+    <a href="links.html" class="btn">← Links</a>
+    <a href="quiz.html" class="btn btn-filled">Next: Quiz →</a>
+  </div>
+
+</div>
+
+<footer>
+  <p>World's Greatest Cars &nbsp;·&nbsp; JavaScript Concept Page</p>
+</footer>
+
+<script>
+// ── FORM VALIDATION ──
+function validateForm() {
+  var name  = document.getElementById('f-name').value.trim();
+  var email = document.getElementById('f-email').value.trim();
+  var car   = document.getElementById('f-car').value;
+  var res   = document.getElementById('form-result');
+  var rlbl  = document.getElementById('form-rlabel');
+  var rmsg  = document.getElementById('form-rmsg');
+
+  res.classList.remove('ok','err');
+  res.classList.add('show');
+
+  if (name === '') {
+    rlbl.className = 'result-label err'; rlbl.textContent = 'Validation Error';
+    rmsg.textContent = '⚠ Please enter your name!';
+    res.classList.add('err'); return;
+  }
+  if (!email.includes('@') || !email.includes('.')) {
+    rlbl.className = 'result-label err'; rlbl.textContent = 'Validation Error';
+    rmsg.textContent = '⚠ Please enter a valid email address!';
+    res.classList.add('err'); return;
+  }
+  if (car === '') {
+    rlbl.className = 'result-label err'; rlbl.textContent = 'Validation Error';
+    rmsg.textContent = '⚠ Please select your favourite car!';
+    res.classList.add('err'); return;
+  }
+
+  rlbl.className = 'result-label ok'; rlbl.textContent = 'Form Valid ✓';
+  rmsg.innerHTML = '✅ Welcome, <strong>' + name + '</strong>! Your favourite car is the <strong>' + car + '</strong>. Excellent taste! 🏎️';
+  res.classList.add('ok');
+}
+
+// ── SPEED CONVERTER ──
+function updateSpeed(val) {
+  document.getElementById('speed-kmh').textContent = val;
+  document.getElementById('speed-slider').value = val;
+  document.getElementById('speed-mph').textContent = Math.round(val * 0.621371);
+  document.getElementById('speed-ms').textContent  = Math.round(val / 3.6);
+}
+function setSpeed(val) { updateSpeed(val); }
+
+// ── COUNTER ──
+var favCount = 0;
+function addFav()    { favCount++; document.getElementById('fav-count').textContent = favCount; }
+function removeFav() { if (favCount > 0) { favCount--; document.getElementById('fav-count').textContent = favCount; } }
+function resetFav()  { favCount = 0; document.getElementById('fav-count').textContent = favCount; }
+
+// ── DYNAMIC CARD ──
+var carInfo = {
+  germany: { flag:'🇩🇪', car:'Porsche 911 GT3', brand:'Porsche AG', speed:'318 km/h', hp:'510 hp', color:'#c9aa00' },
+  italy:   { flag:'🇮🇹', car:'Ferrari SF90 Stradale', brand:'Ferrari SpA', speed:'340 km/h', hp:'986 hp', color:'#e63946' },
+  uk:      { flag:'🇬🇧', car:'McLaren P1', brand:'McLaren Automotive', speed:'350 km/h', hp:'916 hp', color:'#f4a261' },
+  japan:   { flag:'🇯🇵', car:'Nissan GT-R R35', brand:'Nissan Motor Co.', speed:'315 km/h', hp:'565 hp', color:'#e63946' },
+  usa:     { flag:'🇺🇸', car:'Dodge Viper ACR', brand:'Dodge (Stellantis)', speed:'330 km/h', hp:'645 hp', color:'#5e7ce2' },
+  india:   { flag:'🇮🇳', car:'Tata Altroz Racer', brand:'Tata Motors', speed:'180 km/h', hp:'120 hp', color:'#56d364' },
+};
+
+function showCarCard(key) {
+  var d = carInfo[key];
+  document.getElementById('car-card-result').innerHTML =
+    '<div style="display:flex; align-items:center; gap:16px; flex-wrap:wrap;">' +
+    '<div style="font-size:48px;">' + d.flag + '</div>' +
+    '<div>' +
+    '<div style="font-family:\'Bebas Neue\',sans-serif; font-size:26px; letter-spacing:2px; color:#f0ece4;">' + d.car + '</div>' +
+    '<div style="font-size:13px; color:#666; margin-bottom:10px;">' + d.brand + '</div>' +
+    '<div style="display:flex; gap:16px; flex-wrap:wrap; font-family:\'Share Tech Mono\',monospace; font-size:12px;">' +
+    '<span style="color:' + d.color + '">⚡ ' + d.speed + '</span>' +
+    '<span style="color:' + d.color + '">🐎 ' + d.hp + '</span>' +
+    '</div></div></div>';
+}
+</script>
+</body>
+</html>

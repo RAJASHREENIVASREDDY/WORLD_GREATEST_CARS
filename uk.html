@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UK — World's Greatest Cars</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .country-hero{padding:60px 0 40px;position:relative}.country-flag-bg{font-size:120px;position:absolute;right:0;top:30px;opacity:.08;pointer-events:none;user-select:none}.country-name{font-family:'Bebas Neue',sans-serif;font-size:clamp(48px,8vw,90px);letter-spacing:5px;line-height:1}.country-name span{color:var(--accent)}.car-name-big{font-family:'Bebas Neue',sans-serif;font-size:clamp(26px,4vw,42px);letter-spacing:3px;color:var(--muted);margin-bottom:30px}.spec-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin-bottom:30px}.spec-box{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:18px;text-align:center}.spec-val{font-family:'Bebas Neue',sans-serif;font-size:30px;letter-spacing:2px;color:var(--accent);line-height:1}.spec-lbl{font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-top:6px}.fact-box{background:rgba(230,57,70,.06);border:1px solid rgba(230,57,70,.2);border-radius:10px;padding:20px 24px;margin-bottom:30px}.fact-box .label{font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--accent);letter-spacing:3px;text-transform:uppercase;margin-bottom:8px}.other-cars{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}.other-car{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:18px}.other-car h4{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:2px;margin-bottom:4px;color:var(--text)}.other-car p{font-size:13px;color:var(--muted)}.nav-countries{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:40px}.nav-countries a{font-family:'Share Tech Mono',monospace;font-size:11px;padding:5px 12px;border:1px solid var(--border);border-radius:6px;color:var(--muted);text-decoration:none;transition:all .2s}.nav-countries a:hover,.nav-countries a.active{color:var(--text);border-color:var(--accent)}
+  </style>
+</head>
+<body>
+<nav class="navbar">
+  <a href="index.html" class="nav-logo">AUTOCARTA</a>
+  <div class="nav-links"><a href="index.html">Home</a><a href="links.html">Countries</a><a href="tables.html">Spec Table</a><a href="quiz.html">Quiz</a></div>
+</nav>
+<div class="page-wrap">
+  <div class="nav-countries">
+    <a href="germany.html">🇩🇪 Germany</a><a href="italy.html">🇮🇹 Italy</a><a href="uk.html" class="active">🇬🇧 UK</a><a href="japan.html">🇯🇵 Japan</a><a href="usa.html">🇺🇸 USA</a><a href="india.html">🇮🇳 India</a>
+  </div>
+  <div class="country-hero">
+    <div class="country-flag-bg">🇬🇧</div>
+    <div class="concept-badge">Country Page</div>
+    <div class="country-name"><span>United Kingdom</span></div>
+    <div class="car-name-big">McLaren P1</div>
+  </div>
+  <div class="spec-grid">
+    <div class="spec-box"><div class="spec-val">350</div><div class="spec-lbl">Top Speed (km/h)</div></div>
+    <div class="spec-box"><div class="spec-val">2.8s</div><div class="spec-lbl">0-100 km/h</div></div>
+    <div class="spec-box"><div class="spec-val">916</div><div class="spec-lbl">Horsepower</div></div>
+    <div class="spec-box"><div class="spec-val">375</div><div class="spec-lbl">Units Made</div></div>
+    <div class="spec-box"><div class="spec-val">2013</div><div class="spec-lbl">Year Released</div></div>
+    <div class="spec-box"><div class="spec-val">3.8L</div><div class="spec-lbl">Engine</div></div>
+  </div>
+  <div class="card fade-up">
+    <div class="card-label">About the McLaren P1</div>
+    <p style="color:var(--muted);line-height:1.9;">The McLaren P1 is one of the most revered hypercars ever built. It pairs a 3.8-litre twin-turbocharged V8 with an electric motor to produce 916 horsepower combined. Only 375 units were ever built, making it extremely rare. McLaren developed it using direct Formula 1 technology — it features active aerodynamics, carbon fibre body panels, and F1-derived suspension. It can lap the Nürburgring faster than almost any road car.</p>
+  </div>
+  <div class="fact-box">
+    <div class="label">Fun Fact</div>
+    <p>All 375 P1 units sold out before the car was even officially unveiled to the public. McLaren had a waitlist from existing customers who trusted the brand completely — a remarkable achievement in automotive history.</p>
+  </div>
+  <div class="card fade-up">
+    <div class="card-label">Other Iconic British Cars</div>
+    <div class="other-cars">
+      <div class="other-car"><h4>Aston Martin Valkyrie</h4><p>6.5L V12 + Motor · 1160 hp · 2.5s</p></div>
+      <div class="other-car"><h4>Bentley Continental GT</h4><p>6.0L W12 Biturbo · 635 hp · 3.6s</p></div>
+      <div class="other-car"><h4>Rolls-Royce Wraith</h4><p>6.6L V12 Biturbo · 624 hp · 4.4s</p></div>
+      <div class="other-car"><h4>Jaguar F-Type R</h4><p>5.0L V8 SC · 575 hp · 3.5s</p></div>
+    </div>
+  </div>
+  <div class="card fade-up">
+    <div class="card-label">McLaren Lineup — HTML Table</div>
+    <table class="styled-table">
+      <thead><tr><th>Model</th><th>Engine</th><th>HP</th><th>0-100</th><th>Units Made</th></tr></thead>
+      <tbody>
+        <tr><td><strong>P1</strong></td><td>3.8L TT V8 + Motor</td><td>916 hp</td><td>2.8s</td><td>375 only</td></tr>
+        <tr><td><strong>Senna</strong></td><td>4.0L TT V8</td><td>789 hp</td><td>2.8s</td><td>500 only</td></tr>
+        <tr><td><strong>720S</strong></td><td>4.0L TT V8</td><td>710 hp</td><td>2.8s</td><td>Ongoing</td></tr>
+        <tr><td><strong>Elva</strong></td><td>4.0L TT V8</td><td>815 hp</td><td>2.8s</td><td>149 only</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div style="display:flex;gap:12px;flex-wrap:wrap;">
+    <a href="italy.html" class="btn">← Italy</a>
+    <a href="japan.html" class="btn btn-filled">Next: Japan 🇯🇵 →</a>
+    <a href="quiz.html" class="btn">Take the Quiz 🏁</a>
+  </div>
+</div>
+<footer><p>World's Greatest Cars &nbsp;·&nbsp; UK Page</p></footer>
+</body>
+</html>
